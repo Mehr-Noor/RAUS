@@ -1,184 +1,301 @@
-# RAUS
 # Software Requirements Specification (SRS)
 
-## سامانه هوشمند دیکته و گزارش‌دهی سونوگرافی
+## Ultrasound Speech Recognition & Structured Reporting Platform
 
 ---
 
-## 1. مقدمه
+## 1. Executive Summary
 
-### 1.1 هدف سند
+This document defines the Software Requirements Specification (SRS) for an Ultrasound-focused Speech Recognition System (SRS) designed to convert English medical dictation into structured, standardized ultrasound reports. The platform is intended to be clinically accurate, scalable, secure, and commercially viable, with an initial focus on ultrasound reporting and a roadmap toward full radiology reporting (CT, MRI, X-ray).
 
-این سند با هدف تعریف کامل نیازمندی‌های نرم‌افزاری سامانه «دیکته و گزارش‌دهی هوشمند سونوگرافی» تهیه شده است. این سامانه به منظور کمک به پزشکان و سونوگرافیست‌ها برای تولید سریع، دقیق و ساختارمند گزارش‌های سونوگرافی با استفاده از گفتار طراحی می‌شود.
-
-### 1.2 دامنه سیستم
-
-سیستم یک نرم‌افزار تجاری پزشکی است که گفتار پزشک را دریافت کرده، به متن تبدیل می‌کند، مفاهیم پزشکی سونوگرافی را استخراج نموده و گزارش استاندارد سونوگرافی تولید می‌نماید.
-
-### 1.3 کاربران هدف
-
-* پزشکان رادیولوژیست
-* سونوگرافیست‌ها
-* مراکز تصویربرداری و کلینیک‌ها
-* مدیر سیستم مرکز درمانی
+The system leverages Automatic Speech Recognition (ASR), Medical Natural Language Processing (NLP), structured reporting templates, and a modern web-based dashboard to improve reporting speed, consistency, and quality for clinicians.
 
 ---
 
-## 2. توصیف کلی سیستم
+## 2. System Vision
 
-### 2.1 دیدگاه محصول
+The vision is to create a clinician-first, AI-assisted reporting platform that:
 
-این سامانه می‌تواند به صورت:
+* Reduces reporting time by >40%
+* Improves report standardization and quality
+* Operates securely (on-prem or cloud)
+* Scales from ultrasound to full radiology workflows
 
-* نرم‌افزار دسکتاپ (ویندوز)
-* یا وب‌اپلیکیشن مبتنی بر سرور داخلی مرکز
-  پیاده‌سازی شود.
-
-### 2.2 قابلیت‌های سطح بالا
-
-* ضبط گفتار پزشک
-* تبدیل گفتار به متن فارسی پزشکی
-* تشخیص اصطلاحات تخصصی سونوگرافی
-* تولید گزارش ساختارمند
-* خروجی PDF و Word
+The system will prioritize usability, medical accuracy, and regulatory readiness to support commercialization in regional and international healthcare markets.
 
 ---
 
-## 3. Epics
+## 3. Key Business Objectives
 
-* Epic 1: User Management & Authentication
-* Epic 2: Speech Recording & STT Processing
-* Epic 3: Medical NLP & Report Generation
-* Epic 4: Reporting Templates & Editing
-* Epic 5: Data Storage & Security
-* Epic 6: Kafka & InfluxDB Integration
-* Epic 7: Data Validation & Processing Pipeline
-* Epic 8: ML Model Training & MLOps
-* Epic 9: Monitoring & Testing
-* Epic 10: Deployment & CI/CD Pipeline
+### 3.1 Clinical Objectives
 
----
+* Enable real-time English voice dictation for ultrasound exams
+* Generate structured, standardized ultrasound reports
+* Reduce manual typing and post-editing effort
 
-## 4. Acceptance Criteria
+### 3.2 Business Objectives
 
-* AC1: Latency تبدیل گفتار به متن < 2 ثانیه
-* AC2: دقت تبدیل گفتار به متن حداقل ۹۰٪ در محیط واقعی
-* AC3: گزارش تولید شده کاملاً قابل استفاده و مطابق قالب استاندارد باشد
-* AC4: دسترسی کاربر محدود به داده‌های خودش باشد
-* AC5: تمامی سرویس‌ها به صورت containerized و مستقر در Kubernetes cluster باشند
-* AC6: Kafka messages با Schema Registry هماهنگ و بدون خطا منتقل شوند
-* AC7: داده‌های high-frequency time-series در InfluxDB به درستی ذخیره شوند
-* AC8: تست‌های Unit، Integration و Performance با موفقیت پاس شوند
-* AC9: Monitoring metrics در Prometheus/Grafana نمایش داده شوند
-* AC10: داده‌ها به صورت امن در PostgreSQL، MongoDB و S3 ذخیره شوند و دسترسی‌ها طبق IAM کنترل شوند
+* Launch an Ultrasound MVP within 3–4 months
+* Support subscription-based and enterprise licensing models
+* Provide a scalable foundation for radiology expansion
+
+### 3.3 Technical Objectives
+
+* Modular, microservices-based architecture
+* AI/ML-ready platform with MLOps integration
+* Cloud-native with on-prem deployment option
 
 ---
 
-## 5. نیازمندی‌های عملکردی (Functional Requirements)
+## 4. System Architecture Overview
 
-### 5.1 مدیریت کاربر
+The system follows a layered, service-oriented architecture:
 
-* FR-01: سیستم باید امکان تعریف کاربران با نقش‌های مختلف (پزشک، ادمین) را داشته باشد.
-* FR-02: هر کاربر باید فقط به گزارش‌های خود دسترسی داشته باشد.
-
-### 5.2 ضبط و پردازش صدا
-
-* FR-03: سیستم باید امکان ضبط زنده صدا از میکروفون را فراهم کند.
-* FR-04: سیستم باید گفتار فارسی پزشکی را به متن تبدیل کند.
-* FR-05: سیستم باید امکان توقف، ادامه و حذف ضبط را داشته باشد.
-
-### 5.3 پردازش زبان پزشکی سونوگرافی
-
-* FR-06: سیستم باید اصطلاحات آناتومیک (کبد، کلیه، رحم، تخمدان و …) را تشخیص دهد.
-* FR-07: سیستم باید اندازه‌ها (میلی‌متر، سانتی‌متر) را استخراج کند.
-* FR-08: سیستم باید وضعیت طبیعی/غیرطبیعی را تشخیص دهد.
-
-### 5.4 گزارش‌دهی ساختارمند
-
-* FR-09: سیستم باید گزارش را در قالب بخش‌های استاندارد تولید کند:
-
-  * Indication
-  * Technique
-  * Findings
-  * Impression
-* FR-10: سیستم باید قالب‌های مختلف سونوگرافی را پشتیبانی کند:
-
-  * سونوگرافی شکم و لگن
-  * سونوگرافی بارداری
-  * سونوگرافی تیروئید
-
-### 5.5 ویرایش و تأیید گزارش
-
-* FR-11: کاربر باید بتواند متن گزارش را ویرایش کند.
-* FR-12: سیستم باید تغییرات کاربر را ذخیره کند.
-
-### 5.6 خروجی و ذخیره‌سازی
-
-* FR-13: سیستم باید خروجی PDF تولید کند.
-* FR-14: سیستم باید خروجی Word تولید کند.
-* FR-15: سیستم باید گزارش‌ها را آرشیو کند.
+* Presentation Layer (Web Dashboard)
+* Application Layer (API & Business Logic)
+* AI/ML Layer (ASR, NLP, Optimization)
+* Data Layer (Structured & Time-Series Data)
+* Infrastructure Layer (Kubernetes, Observability)
 
 ---
 
-## 6. Tasks و Issue مرحله به مرحله (Jira/Trello-ready)
+## 4.1 High-Level System Architecture
 
-### Sprint 1 – Setup پایه و DevOps
+```
+[Client (Web)]
+      ↓
+[API Gateway]
+      ↓
+[ASR Service (Whisper)]
+      ↓
+[Medical NLP Engine]
+      ↓
+[Template & Optimization Engine]
+      ↓
+[Report Editor & Export]
+      ↓
+[Data Storage & Analytics]
+```
 
-| Task    | Description                                      | Est. Time | Priority | Epic    |
-| ------- | ------------------------------------------------ | --------- | -------- | ------- |
-| T1.1    | راه‌اندازی پروژه Electron + React                | 1 روز     | High     | Epic 1  |
-| T1.2    | ایجاد Repo Git و Branching Strategy              | 0.5 روز   | High     | Epic 10 |
-| T1.3    | پیاده‌سازی Dockerfile برای سرویس‌ها              | 1 روز     | High     | Epic 10 |
-| T1.4    | استقرار نمونه microservice در Kubernetes Cluster | 2 روز     | High     | Epic 10 |
-| T1.5    | راه‌اندازی GitHub Actions CI/CD                  | 1 روز     | High     | Epic 10 |
-| Issue 1 | Failure در deploy microservice اولیه             | -         | Critical | Epic 10 |
+---
 
-### Sprint 2 – Kafka & InfluxDB Integration
+## 4.2 Technology Stack
 
-| Task    | Description                                   | Est. Time | Priority | Epic   |
-| ------- | --------------------------------------------- | --------- | -------- | ------ |
-| T2.1    | استقرار resilient Kafka cluster با Strimzi    | 2 روز     | High     | Epic 6 |
-| T2.2    | فعال‌سازی Schema Registry برای Kafka          | 1 روز     | High     | Epic 6 |
-| T2.3    | استقرار InfluxDB برای داده‌های high-frequency | 1 روز     | High     | Epic 6 |
-| T2.4    | اتصال سرویس‌ها به Kafka و InfluxDB            | 2 روز     | High     | Epic 6 |
-| Issue 2 | پیام‌ها از Kafka نرسد یا Schema mismatch      | -         | Critical | Epic 6 |
+### Frontend
 
-### Sprint 3 – Data Storage & Security
+* React.js
+* TypeScript
+* Slate.js (Rich Text Editor)
+* Tailwind / MUI
 
-| Task    | Description                                    | Est. Time | Priority | Epic   |
-| ------- | ---------------------------------------------- | --------- | -------- | ------ |
-| T3.1    | Provision PostgreSQL برای داده‌های ساختاریافته | 1 روز     | High     | Epic 5 |
-| T3.2    | Provision MongoDB برای لاگ‌ها و anomalyها      | 1 روز     | High     | Epic 5 |
-| T3.3    | ایجاد S3 bucket برای raw data lake             | 0.5 روز   | High     | Epic 5 |
-| T3.4    | تنظیم IAM roles / policies برای سرویس‌ها       | 1 روز     | High     | Epic 5 |
-| T3.5    | ذخیره connection strings در Kubernetes Secrets | 0.5 روز   | High     | Epic 5 |
-| Issue 3 | دسترسی سرویس‌ها به storage محدود یا خطا        | -         | Critical | Epic 5 |
+### Backend
 
-### Sprint 4 – Data Processing & Validation
+* Python (FastAPI)
+* Node.js (Auxiliary Services)
+* REST & WebSocket APIs
 
-| Task    | Description                                      | Est. Time | Priority | Epic   |
-| ------- | ------------------------------------------------ | --------- | -------- | ------ |
-| T4.1    | Build Flink validation service                   | 2 روز     | High     | Epic 7 |
-| T4.2    | پیاده‌سازی model-based reconciliation algorithms | 3 روز     | High     | Epic 7 |
-| T4.3    | پیاده‌سازی real-time validation rules engine     | 3 روز     | High     | Epic 7 |
-| T4.4    | Data routing logic برای classification           | 2 روز     | High     | Epic 7 |
-| Issue 4 | Invalid data not flagged correctly               | -         | Critical | Epic 7 |
+### AI / ML
 
-### Sprint 5 – Data Transformation & ML Pipeline
+* OpenAI Whisper (ASR)
+* spaCy / scispaCy
+* Custom Rule Engine
+* Optional LLM (on-prem or private)
 
-| Task    | Description                                                        | Est. Time | Priority | Epic   |
-| ------- | ------------------------------------------------------------------ | --------- | -------- | ------ |
-| T5.1    | آماده‌سازی و transform داده‌های clean برای ML                      | 3 روز     | High     | Epic 8 |
-| T5.2    | ایجاد pipeline برای feature selection, extraction & transformation | 3 روز     | High     | Epic 8 |
-| T5.3    | اعمال اصول MLOps و مدیریت چرخه عمر مدل‌ها                          | 2 روز     | High     | Epic 8 |
-| Issue 5 | Feature pipeline خطا یا داده ناقص                                  | -         | High     | Epic 8 |
+### Data
 
-### Sprint 6 – Monitoring & Testing
+* PostgreSQL (Transactional)
+* TimescaleDB (Time-Series)
+* Redis (Caching)
 
-| Task    | Description                                            | Est. Time | Priority | Epic   |
-| ------- | ------------------------------------------------------ | --------- | -------- | ------ |
-| T6.1    | Prometheus/Grafana برای متریک‌ها و مانیتورینگ          | 2 روز     | High     | Epic 9 |
-| T6.2    | نوشتن تست‌های Unit, Integration, Performance با Pytest | 3 روز     | High     | Epic 9 |
-| T6.3    | بهینه‌سازی سرویس‌ها و رفع bottleneckها                 | 2 روز     | High     | Epic 9 |
-| Issue 6 | Metrics نمایش داده نشود یا تست‌ها fail شوند            | -         | Critical | Epic 9 |
+### Infrastructure
 
+* Docker
+* Kubernetes
+* Helm
+* GitHub Actions / GitLab CI
+
+---
+
+## 5. Functional Requirements
+
+### FR-101: Multi-Source Data Integration
+
+**Description:**
+The system shall ingest data from multiple sources including microphone audio, uploaded audio files, manual text input, and external systems.
+
+**Requirements:**
+
+* Support WAV/MP3 audio ingestion
+* Support real-time microphone streaming
+* Integrate with external PACS/RIS (future)
+
+---
+
+### Data Validation & Reconciliation (DVR)
+
+**Description:**
+Ensure consistency and accuracy between dictated content, structured findings, and final reports.
+
+**Requirements:**
+
+* Medical term validation
+* Conflict detection (e.g., normal vs abnormal)
+* User confirmation for ambiguous findings
+
+---
+
+### FR-201: Data Quality Framework
+
+**Description:**
+A framework to assess and improve report quality.
+
+**Requirements:**
+
+* Spelling and terminology validation
+* Negation detection
+* Completeness scoring per template
+
+---
+
+### Real-Time Optimization (RTO)
+
+**Description:**
+Optimize reporting flow during dictation.
+
+**Requirements:**
+
+* Real-time feedback on dictation quality
+* Auto-suggestion of structured fields
+
+---
+
+### FR-401: Optimization Engine
+
+**Description:**
+Transforms raw transcribed text into structured report components.
+
+**Requirements:**
+
+* Organ detection (Liver, Kidney, Uterus, etc.)
+* Attribute extraction (size, echogenicity)
+* Normal/abnormal classification
+
+---
+
+### FR-501: Dashboard & Visualization
+
+#### React.js Dashboard Architecture
+
+**Requirements:**
+
+* Modular component-based UI
+* Role-based access control
+* Editable report preview
+* Analytics widgets (usage, speed)
+
+---
+
+## 6. Data Management Requirements
+
+### 6.1 Data Architecture
+
+* Structured data stored in PostgreSQL
+* Time-series metrics in TimescaleDB
+* Encrypted object storage for temporary audio
+
+---
+
+## 7. Non-Functional Requirements
+
+### 7.1 Performance Requirements
+
+#### NFR-101: System Performance Matrix
+
+| Metric            | Target    |
+| ----------------- | --------- |
+| ASR Latency       | < 2 sec   |
+| Report Generation | < 3 sec   |
+| Dashboard Load    | < 1.5 sec |
+| Concurrent Users  | 100+      |
+
+---
+
+### DR-101: Time-Series Data Management
+
+**Description:**
+Store system metrics, model performance, and usage analytics.
+
+---
+
+## 8. MLOps & DevOps Requirements
+
+### 8.1 CI/CD Pipeline
+
+* Automated build and test
+* Container image scanning
+* Environment-based deployment
+
+---
+
+### MLOps-201: Model Lifecycle Management
+
+**Requirements:**
+
+* Versioned ASR/NLP models
+* Performance tracking
+* Rollback capability
+
+---
+
+### MLOps-101: Automated Deployment Pipeline
+
+**Requirements:**
+
+* Canary deployments for models
+* Automated validation before promotion
+
+---
+
+## 9. Monitoring & Observability
+
+### 9.1 Comprehensive Monitoring Stack
+
+* Prometheus (Metrics)
+* Grafana (Dashboards)
+* Loki (Logs)
+* Jaeger (Tracing)
+
+---
+
+### OBS-101: Observability Architecture
+
+**Requirements:**
+
+* End-to-end request tracing
+* Model inference monitoring
+* Alerting on SLA breaches
+
+---
+
+## 10. Deployment & Infrastructure
+
+### 10.1 Kubernetes Deployment Architecture
+
+* Microservices deployed via Kubernetes
+* Horizontal Pod Autoscaling
+* Namespace isolation per environment
+
+---
+
+## 11. Roadmap (Post-MVP)
+
+* Radiology reporting (CT/MRI/X-ray)
+* Impression recommendation engine
+* PACS/RIS native integration
+* Multi-language support
+
+---
+
+## 12. Conclusion
+
+This SRS defines a robust, scalable, and commercially viable foundation for an Ultrasound Speech Recognition & Structured Reporting platform, enabling rapid MVP delivery and long-term expansion into enterprise radiology solutions.
