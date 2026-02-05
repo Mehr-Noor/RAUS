@@ -684,3 +684,172 @@ This SRS defines a robust, scalable, and commercially viable foundation for an U
 | 14     | 12.1-12.5  | Backend / Frontend / AI       | Feature enhancements; Bug fixes                                                   | UI polish                                  | AI model monitoring                                      | Production monitoring                                             | Compliance sign-off                                  |
 | 15     | 13.1-13.5  | Backend / Frontend / AI       | Integration improvements                                                          | UI/UX adjustments                          | ML model retraining                                      | Infrastructure tuning                                              | QA verification                                      |
 | 16     | 14.1-15.2 | Backend / Frontend / AI / DevOps / QA | Final optimization; Release prep                                                  | Final UI polish                             | Final AI/ML pipeline                                      | CI/CD final check; Monitoring enhancements                         | Final QA sign-off; Training & documentation        |
+
+# 🗺 Project Roadmap – Ultrasound Dictation & Reporting System
+
+## 🎯 Vision
+Build an enterprise-grade, AI-ready ultrasound dictation and reporting system that is:
+- Clinically accurate
+- Secure & compliant (HIPAA/GDPR)
+- Scalable for hospitals and clinics
+- Ready for AI-driven diagnostics
+
+---
+
+## 📆 Phase 0: Project Kickoff & Planning (Week 0–1)
+
+### Goals
+- Align team on scope, architecture, and MVP
+- Prepare development and infrastructure environment
+
+### Key Activities
+- Review SRS and architecture
+- Define MVP scope and success criteria
+- Setup repositories and workflows
+
+### Deliverables
+- Approved SRS
+- GitHub repository structure
+- Initial task list & milestones
+
+### Related Tasks
+- 1.1 Requirement Gathering
+- 1.2 PRD Drafting
+- 3.1 Kubernetes Cluster Setup
+- 3.2 CI/CD Pipeline Preparation
+
+---
+
+## 📆 Phase 1: MVP Core & AI Proof-of-Concept (Weeks 2–3)
+
+### Goals
+- Deliver a working end-to-end PoC
+- Validate Speech-to-Text pipeline
+
+### Key Activities
+- Backend CRUD services
+- Basic frontend UI
+- STT integration
+
+### Deliverables
+- Patient Management Service
+- Audio upload → text report flow
+- Internal demo
+
+### Related Tasks
+- 2.1 Wireframe Design
+- 2.2 UI Mockups
+- 4.1 Patient Management Microservice
+- 4.2 Speech-to-Text Integration
+
+---
+
+## 📆 Phase 2: Infrastructure & Observability (Weeks 4–5)
+
+### Goals
+- Make the system production-capable
+- Enable monitoring and logging
+
+### Key Activities
+- CI/CD completion
+- Monitoring setup
+- Event streaming
+
+### Deliverables
+- CI/CD pipelines
+- Grafana dashboards
+- Kafka topics
+
+### Related Tasks
+- 5.1 DICOM Storage & Indexing
+- 5.2 Event Streaming Setup
+- 7.1 Prometheus & Grafana
+- 7.2 Logging & Alerting
+
+---
+
+## 📆 Phase 3: MVP Feature Completion (Weeks 6–7)
+
+### Goals
+- Complete MVP features
+- Improve AI accuracy and usability
+
+### Key Activities
+- Report generation
+- Multi-language support
+- STT tuning
+
+### Deliverables
+- Structured reports
+- Multi-language UI
+- Improved STT accuracy
+
+### Related Tasks
+- 4.3 Report Generation
+- 8.2 Multi-language Support
+- 8.3 Advanced Reporting Features
+
+---
+
+## 📆 Phase 4: AI Readiness & Advanced Features (Weeks 8–9)
+
+### Goals
+- Prepare AI pipelines for production
+- Enable monitoring & retraining
+
+### Key Activities
+- AI model monitoring
+- Retraining pipeline
+- Advanced reporting
+
+### Deliverables
+- AI monitoring dashboards
+- Retraining workflow
+- Exportable reports
+
+### Related Tasks
+- 8.1 AI Image Analysis
+- 8.4 AI Model Monitoring & Retraining
+
+---
+
+## 📆 Phase 5: Data, Security & Compliance (Weeks 10–11)
+
+### Goals
+- Ensure data integrity and regulatory compliance
+
+### Key Activities
+- DICOM storage
+- Backup & encryption
+- Security & compliance audits
+
+### Deliverables
+- Encrypted data storage
+- Compliance documentation
+- Security audit report
+
+### Related Tasks
+- 5.3 Data Backup & Encryption
+- 6.1 Compliance Audit
+- 6.2 Security Testing
+
+---
+
+## 📆 Phase 6: QA, Release & Support (Week 12)
+
+### Goals
+- Prepare MVP for release
+- Ensure quality and stability
+
+### Key Activities
+- End-to-end testing
+- Performance tuning
+- Release documentation
+
+### Deliverables
+- Release candidate
+- QA sign-off
+- Deployment runbooks
+
+### Related Tasks
+- 9.1–9.5 QA & Release Tasks
