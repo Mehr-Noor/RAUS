@@ -1,11 +1,10 @@
-Title,Body,Labels,Assignee
 "1.1 Kubernetes Cluster Setup","Description:
 Provision a managed Kubernetes cluster (AWS EKS/GKE) or local cluster (kind/minikube).
 
 Acceptance Criteria:
 - kubectl access works
 - Cluster nodes are healthy and Ready
-- Setup documented in repo","devops,epic-infrastructure,task,priority-critical",Mehr-Noor
+- Setup documented in repo","devops,infrastructure,task,priority-critical",Mehr-Noor
 
 "1.2 Deploy Prometheus and Grafana","Description:
 Deploy Prometheus for metrics collection and Grafana for visualization.
@@ -13,7 +12,7 @@ Deploy Prometheus for metrics collection and Grafana for visualization.
 Acceptance Criteria:
 - Prometheus scrapes metrics from internal endpoints
 - Grafana login works
-- Basic dashboard shows CPU/Memory usage","devops,epic-infrastructure,task,priority-high",Mehr-Noor
+- Basic dashboard shows CPU/Memory usage","devops,infrastructure,task,priority-high",Mehr-Noor
 
 "1.3 CI/CD Pipeline Setup","Description:
 Create GitHub Actions workflow to test, build, and deploy microservices.
@@ -21,7 +20,7 @@ Create GitHub Actions workflow to test, build, and deploy microservices.
 Acceptance Criteria:
 - Workflow triggers on PR or push to main
 - Services built, tested, and deployed to staging
-- Logs available in GitHub Actions console","devops,epic-infrastructure,task,priority-critical",Mehr-Noor
+- Logs available in GitHub Actions console","devops,infrastructure,task,priority-critical",Mehr-Noor
 
 "2.1 Kafka Cluster Setup","Description:
 Deploy Kafka cluster for streaming raw data from ultrasound devices.
@@ -29,7 +28,7 @@ Deploy Kafka cluster for streaming raw data from ultrasound devices.
 Acceptance Criteria:
 - Kafka broker running and reachable
 - Topics for raw, validated, anomalies created
-- Test producer/consumer can send and read messages","backend,epic-data-streaming,task,priority-critical",Mehr-Noor
+- Test producer/consumer can send and read messages","backend,data-streaming,task,priority-critical",Mehr-Noor
 
 "2.2 Python Kafka Consumer & Validation Service","Description:
 Python microservice consumes Kafka data, validates it, and flags invalid records.
@@ -37,7 +36,7 @@ Python microservice consumes Kafka data, validates it, and flags invalid records
 Acceptance Criteria:
 - Messages consumed from Kafka topic
 - Validation rules applied, invalid records logged
-- Valid messages forwarded or stored in PostgreSQL/MongoDB","backend,epic-data-streaming,task,priority-high",Mehr-Noor
+- Valid messages forwarded or stored in PostgreSQL/MongoDB","backend,data-streaming,task,priority-high",Mehr-Noor
 
 "2.3 Real-Time Data Producer Service","Description:
 Service streams clean data as Kafka messages, containerized with Docker, includes logging.
@@ -45,7 +44,7 @@ Service streams clean data as Kafka messages, containerized with Docker, include
 Acceptance Criteria:
 - Service containerized and deployable to Kubernetes
 - Each row sent as Kafka message
-- Logging shows message production and service status","backend,epic-data-streaming,task,priority-high",Mehr-Noor
+- Logging shows message production and service status","backend,data-streaming,task,priority-high",Mehr-Noor
 
 "3.1 Flink Job for Validation & Reconciliation","Description:
 Flink job validates streaming data in real-time and reconciles it using model-based algorithms.
@@ -53,7 +52,7 @@ Flink job validates streaming data in real-time and reconciles it using model-ba
 Acceptance Criteria:
 - Consumes messages from Kafka
 - Flags invalid/anomalous records or stores in MongoDB
-- Reconciliation rules applied to correct inconsistencies","backend,epic-data-validation,task,priority-high",Mehr-Noor
+- Reconciliation rules applied to correct inconsistencies","backend,data-validation,task,priority-high",Mehr-Noor
 
 "4.1 Data Processing & Feature Engineering Pipeline","Description:
 Process clean data to extract, select, and transform features for model training.
@@ -61,7 +60,7 @@ Process clean data to extract, select, and transform features for model training
 Acceptance Criteria:
 - Pipeline runs automatically on input data
 - Feature set stored and accessible for model training
-- Logging shows pipeline progress and completion","backend,epic-feature-engineering,task,priority-high",Mehr-Noor
+- Logging shows pipeline progress and completion","backend,feature-engineering,task,priority-high",Mehr-Noor
 
 "4.2 Fine-Tune AI/ML Models","Description:
 Fine-tune AI/ML models using feature set for better accuracy and clinical relevance.
@@ -69,18 +68,18 @@ Fine-tune AI/ML models using feature set for better accuracy and clinical releva
 Acceptance Criteria:
 - Training completes without errors
 - Metrics (accuracy, precision, recall) meet thresholds
-- Model stored in repository ready for deployment","backend,epic-feature-engineering,task,priority-critical",Mehr-Noor
+- Model stored in repository ready for deployment","backend,feature-engineering,task,priority-critical",Mehr-Noor
 
 "5.1 Integrate Metrics with InfluxDB","Description:
 Collect metrics from microservices and Flink jobs in InfluxDB.
 
 Acceptance Criteria:
 - Metrics stored from each service
-- Data points updated in real-time","devops,epic-monitoring,task,priority-high",Mehr-Noor
+- Data points updated in real-time","devops,monitoring,task,priority-high",Mehr-Noor
 
 "5.2 Create Grafana Dashboards","Description:
 Build Grafana dashboards to visualize cluster, microservice, and metrics from InfluxDB.
 
 Acceptance Criteria:
 - Dashboards accessible via Grafana UI
-- At least one dashboard shows CPU, memory, Kafka rate, Flink job status","devops,epic-monitoring,task,priority-high",Mehr-Noor
+- At least one dashboard shows CPU, memory, Kafka rate, Flink job status","devops,monitoring,task,priority-high",Mehr-Noor
