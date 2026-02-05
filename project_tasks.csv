@@ -1,86 +1,156 @@
 Title,Body,Labels,Assignee
-"1.1 Kubernetes Cluster Setup","Description:
-Provision a managed Kubernetes cluster (AWS EKS/GKE) or local cluster (kind/minikube).
+"1.1 Requirement Gathering & Interviews","Description:
+Conduct interviews with radiologists and sonographers to gather functional requirements. Section: SRS – Software Requirements Specification; Phase: Product Definition
+
+Acceptance Criteria:
+- 10+ user interviews conducted
+- Documented feature list in PRD
+- Initial MVP defined","research,task,priority-critical",Mehr-Noor
+
+"1.2 PRD Drafting","Description:
+Compile requirements into a Product Requirement Document. Section: SRS; Phase: Product Definition
+
+Acceptance Criteria:
+- PRD includes features, users, constraints, scope
+- Reviewed by stakeholders","documentation,task,priority-high",Mehr-Noor
+
+"2.1 Wireframe Design","Description:
+Design wireframes for desktop and mobile UI. Section: System Architecture Overview; Phase: UI/UX Design
+
+Acceptance Criteria:
+- Wireframes approved by 3–5 medical professionals
+- Interactive prototype ready in Figma","design,task,priority-high",Mehr-Noor
+
+"2.2 UI Mockups & Feedback","Description:
+Prepare final UI mockups and gather feedback from doctors. Section: System Architecture Overview; Phase: UI/UX Design
+
+Acceptance Criteria:
+- Mockups reviewed and approved
+- Feedback incorporated into design","design,task,priority-high",Mehr-Noor
+
+"3.1 Kubernetes Cluster Setup","Description:
+Provision a managed Kubernetes cluster (AWS EKS/GKE) or local cluster (kind/minikube). Section: System Architecture Overview; Phase: Tech Selection & Architecture
 
 Acceptance Criteria:
 - kubectl access works
 - Cluster nodes are healthy and Ready
-- Setup documented in repo","devops,infrastructure,task,priority-critical",Mehr-Noor
+- Setup documented in repo","devops,task,priority-critical",Mehr-Noor
 
-"1.2 Deploy Prometheus and Grafana","Description:
-Deploy Prometheus for metrics collection and Grafana for visualization.
-
-Acceptance Criteria:
-- Prometheus scrapes metrics from internal endpoints
-- Grafana login works
-- Basic dashboard shows CPU/Memory usage","devops,infrastructure,task,priority-high",Mehr-Noor
-
-"1.3 CI/CD Pipeline Setup","Description:
-Create GitHub Actions workflow to test, build, and deploy microservices.
+"3.2 Helm & CI/CD Pipeline Preparation","Description:
+Install Helm and prepare initial CI/CD pipeline templates for microservices deployment. Section: MLOps & DevOps Requirements; Phase: Tech Selection & Architecture
 
 Acceptance Criteria:
-- Workflow triggers on PR or push to main
-- Services built, tested, and deployed to staging
-- Logs available in GitHub Actions console","devops,infrastructure,task,priority-critical",Mehr-Noor
+- Helm installed and functional
+- CI/CD templates ready for FastAPI and Frontend services
+- Deployment pipeline documented","devops,task,priority-high",Mehr-Noor
 
-"2.1 Kafka Cluster Setup","Description:
-Deploy Kafka cluster for streaming raw data from ultrasound devices.
-
-Acceptance Criteria:
-- Kafka broker running and reachable
-- Topics for raw, validated, anomalies created
-- Test producer/consumer can send and read messages","backend,data-streaming,task,priority-critical",Mehr-Noor
-
-"2.2 Python Kafka Consumer & Validation Service","Description:
-Python microservice consumes Kafka data, validates it, and flags invalid records.
+"4.1 Patient Management Microservice","Description:
+Develop backend microservice for patient records CRUD. Section: Functional Requirements; Phase: MVP Development
 
 Acceptance Criteria:
-- Messages consumed from Kafka topic
-- Validation rules applied, invalid records logged
-- Valid messages forwarded or stored in PostgreSQL/MongoDB","backend,data-streaming,task,priority-high",Mehr-Noor
+- Endpoints functional and tested
+- Integration test with PostgreSQL passes
+- Swagger documentation complete","backend,task,priority-critical",Mehr-Noor
 
-"2.3 Real-Time Data Producer Service","Description:
-Service streams clean data as Kafka messages, containerized with Docker, includes logging.
-
-Acceptance Criteria:
-- Service containerized and deployable to Kubernetes
-- Each row sent as Kafka message
-- Logging shows message production and service status","backend,data-streaming,task,priority-high",Mehr-Noor
-
-"3.1 Flink Job for Validation & Reconciliation","Description:
-Flink job validates streaming data in real-time and reconciles it using model-based algorithms.
+"4.2 Speech-to-Text Microservice Integration","Description:
+Integrate STT engine (Whisper/Google) for real-time dictation. Section: Functional Requirements; Phase: MVP Development
 
 Acceptance Criteria:
-- Consumes messages from Kafka
-- Flags invalid/anomalous records or stores in MongoDB
-- Reconciliation rules applied to correct inconsistencies","backend,data-validation,task,priority-high",Mehr-Noor
+- Audio processed and converted to text
+- Error rate <5% medical terms
+- Logs stored in MongoDB","backend,task,priority-critical",Mehr-Noor
 
-"4.1 Data Processing & Feature Engineering Pipeline","Description:
-Process clean data to extract, select, and transform features for model training.
-
-Acceptance Criteria:
-- Pipeline runs automatically on input data
-- Feature set stored and accessible for model training
-- Logging shows pipeline progress and completion","backend,feature-engineering,task,priority-high",Mehr-Noor
-
-"4.2 Fine-Tune AI/ML Models","Description:
-Fine-tune AI/ML models using feature set for better accuracy and clinical relevance.
+"4.3 Report Generation Microservice","Description:
+Develop service to generate structured reports from STT output. Section: Functional Requirements; Phase: MVP Development
 
 Acceptance Criteria:
-- Training completes without errors
-- Metrics (accuracy, precision, recall) meet thresholds
-- Model stored in repository ready for deployment","backend,feature-engineering,task,priority-critical",Mehr-Noor
+- Reports generated correctly
+- Export PDF and structured format
+- Integration test passed","backend,task,priority-high",Mehr-Noor
 
-"5.1 Integrate Metrics with InfluxDB","Description:
-Collect metrics from microservices and Flink jobs in InfluxDB.
-
-Acceptance Criteria:
-- Metrics stored from each service
-- Data points updated in real-time","devops,monitoring,task,priority-high",Mehr-Noor
-
-"5.2 Create Grafana Dashboards","Description:
-Build Grafana dashboards to visualize cluster, microservice, and metrics from InfluxDB.
+"5.1 DICOM Storage & Indexing","Description:
+Setup AWS S3 buckets and indexing pipeline for DICOM images. Section: Data Management Requirements; Phase: MVP Development
 
 Acceptance Criteria:
-- Dashboards accessible via Grafana UI
-- At least one dashboard shows CPU, memory, Kafka rate, Flink job status","devops,monitoring,task,priority-high",Mehr-Noor
+- DICOM upload succeeds
+- Metadata indexed in PostgreSQL
+- Role-based access control works","devops,task,priority-high",Mehr-Noor
+
+"5.2 Event Streaming Setup","Description:
+Configure Kafka topics for patient data, reports, and STT events. Section: Data Management Requirements; Phase: MVP Development
+
+Acceptance Criteria:
+- Topics created and accessible
+- End-to-end producer/consumer test passes
+- Documentation updated","devops,task,priority-critical",Mehr-Noor
+
+"5.3 Data Backup & Encryption","Description:
+Implement backup strategy and encryption for all patient data. Section: Data Management Requirements; Phase: MVP Development
+
+Acceptance Criteria:
+- Scheduled backups verified
+- Data encrypted at rest and in transit
+- Restore tested","devops,task,priority-critical",Mehr-Noor
+
+"6.1 Compliance Audit & Documentation","Description:
+Prepare HIPAA/GDPR compliance documentation. Section: Compliance & Regulatory Requirements; Phase: Compliance & Release Prep
+
+Acceptance Criteria:
+- Audit logs enabled
+- Encryption verified
+- Documentation approved by QA/legal team","compliance,task,priority-critical",Mehr-Noor
+
+"6.2 Security Testing","Description:
+Perform penetration testing and security audit. Section: Compliance & Regulatory Requirements; Phase: Compliance & Release Prep
+
+Acceptance Criteria:
+- All critical vulnerabilities resolved
+- Security report approved","security,task,priority-critical",Mehr-Noor
+
+"7.1 Prometheus & Grafana Setup","Description:
+Deploy Prometheus & Grafana to monitor microservices and STT pipeline. Section: Monitoring & Observability; Phase: Testing & Iteration
+
+Acceptance Criteria:
+- Metrics visible for all microservices
+- Alerts configured
+- Dashboards documented","devops,task,priority-high",Mehr-Noor
+
+"7.2 Logging & Alerting","Description:
+Implement centralized logging and alerting system. Section: Monitoring & Observability; Phase: Testing & Iteration
+
+Acceptance Criteria:
+- Logs collected
+- Alerts sent on failures
+- Documentation complete","devops,task,priority-high",Mehr-Noor
+
+"8.1 AI Image Analysis Service","Description:
+Build containerized AI microservice for ultrasound image analysis. Section: Advanced Features Development; Phase: Post-release
+
+Acceptance Criteria:
+- Model deployed in Kubernetes
+- Feature pipeline tested
+- Fine-tuned model accuracy meets threshold","ai,task,priority-high",Mehr-Noor
+
+"8.2 Multi-language Support Implementation","Description:
+Implement multilingual support for reports and UI. Section: Functional Requirements / Advanced Features; Phase: Post-release
+
+Acceptance Criteria:
+- English, Persian, and other languages selectable
+- UI displays correctly
+- Reports exported in selected language","frontend,task,priority-medium",Mehr-Noor
+
+"8.3 Advanced Reporting Features","Description:
+Develop automatic report formatting and template system. Section: Advanced Features Development; Phase: Post-release
+
+Acceptance Criteria:
+- Reports automatically formatted
+- Templates applied correctly
+- Export functions work","backend,task,priority-high",Mehr-Noor
+
+"8.4 AI Model Monitoring & Retraining Pipeline","Description:
+Implement monitoring and retraining pipeline for AI models. Section: MLOps & DevOps Requirements / Advanced Features Development; Phase: Post-release
+
+Acceptance Criteria:
+- AI model performance monitored
+- Retraining pipeline operational
+- Metrics tracked in Grafana/Prometheus","ai,devops,priority-high",Mehr-Noor
