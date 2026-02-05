@@ -1,6 +1,0 @@
-Title,Body,Labels,Type
-"EPIC-001: Core Speech Recognition (ASR)","Design and implement ASR using Whisper","epic,backend,ai,priority-critical","epic"
-"EPIC-002: Medical NLP & Structuring Engine","Convert transcribed text into structured ultrasound findings","epic,backend,ai,priority-critical","epic"
-"EPIC-003: Ultrasound Templates & Reporting","Create standardized ultrasound report templates","epic,backend,clinical,priority-high","epic"
-"EPIC-004: Frontend Dashboard & Editor","Clinician-friendly dashboard for dictation & editing","epic,frontend,priority-high","epic"
-"EPIC-005: Infrastructure, DevOps & MLOps","Cloud-native infra, CI/CD, GitOps, MLOps","epic,devops,mlops,priority-critical","epic"

@@ -1,7 +1,0 @@
-Title,Body,Labels,EPIC
-"ISSUE-601: Kubernetes Cluster Setup","Provision Kubernetes cluster","devops,task,priority-critical","EPIC-005"
-"ISSUE-602: HPA Configuration","Configure HPA for microservices","devops,task,priority-high","EPIC-005"
-"ISSUE-606: CI/CD Pipeline","Build CI/CD with GitHub Actions","devops,task,priority-critical","EPIC-005"
-"ISSUE-701: Kafka Cluster & Schema Registry","Deploy Kafka + Schema Registry","backend,devops,task,priority-critical","EPIC-002"
-"ISSUE-801: Flink Data Validation","Real-time data validation service","backend,ai,task,priority-critical","EPIC-002"
-"ISSUE-901: React.js SPA Init","Initialize React SPA","frontend,task,priority-high","EPIC-004"
