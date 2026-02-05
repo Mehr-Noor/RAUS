@@ -104,6 +104,47 @@ The system follows a layered, service-oriented architecture:
 └──────────────────────────┘
 
 
+        +--------------------+
+        |     Frontend       |
+        |  (Web & Mobile)    |
+        +--------------------+
+                 |
+                 v
+        +--------------------+
+        |      Backend       |
+        |  Microservices     |
+        +--------------------+
+        | Patient Mgmt       |
+        | Report Gen         |
+        | STT Integration    |
+        +--------------------+
+                 |
+         -----------------
+         |               |
+         v               v
++----------------+   +----------------+
+|    AI/ML       |   |    Data Layer  |
+| Image Analysis |   | PostgreSQL/MongoDB|
+| STT/Reports    |   | Kafka / S3      |
++----------------+   +----------------+
+         |
+         v
++--------------------+
+|  DevOps & Infra    |
+| Kubernetes / CI/CD |
++--------------------+
+         |
+         v
++--------------------+
+| Monitoring & Logs  |
+| Prometheus/Grafana |
++--------------------+
+         |
+         v
++--------------------+
+| Security & Compliance |
+| Encryption / Audit  |
++--------------------+
 
 | Section                                          | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -115,7 +156,168 @@ The system follows a layered, service-oriented architecture:
 | **6. MLOps & DevOps Requirements**               | - Continuous Integration / Continuous Deployment pipelines (CI/CD) via GitHub Actions.<br>- Containerized microservices with Docker.<br>- Kubernetes orchestration with Helm charts.<br>- Automated model training, testing, and deployment for AI features.<br>- Feature pipelines for ML (Feature Selection, Feature Engineering, Fine-Tuning).                                                                                                                |
 | **7. Monitoring & Observability**                | - Prometheus for metrics collection.<br>- Grafana dashboards for visualization.<br>- Logging and tracing via centralized logging (MongoDB/InfluxDB).<br>- Real-time health checks for microservices, STT, and AI pipelines.<br>- Alerting for failures or anomalies.                                                                                                                                                                                             |
 | **8. Deployment & Infrastructure**               | - Cloud deployment: AWS preferred.<br>- Kubernetes cluster for microservices.<br>- Helm for managing releases and rollbacks.<br>- Multi-zone, scalable infrastructure.<br>- Backup strategy for DBs and S3.<br>- CI/CD pipeline for automated testing and deployment.                                                                                                                                                                                            |
-| **9. Compliance & Regulatory Requirements**      | - HIPAA compliance for PHI (Protected Health Information).<br>- GDPR compliance for EU patient data.<br>- Encryption (AES-256) in storage and TLS 1.2+ in transit.<br>- Audit logs for all access and modifications.<br>- Documentation for regulatory audits and internal QA.                                                                                                                                                                                   |
+| **9. Compliance & Regulatory Requirements**      | - HIPAA compliance for PHI (Protected Health Information).<br>- GDPR compliance for EU patient data.<br>- Encryption (AES-256) in storage and TLS 1.2+ in transit.<br>- Audit logs for all access and modifications.<br>- Documentation for regulatory audits and internal QA.                                                       # RAUS – Complete System Architecture (Ultrasound Dictation Platform)
+
+This document provides the **full architectural view** of the RAUS system, including:
+
+* High-Level Architecture
+* Component-Level Architecture
+* Security Architecture
+* AI & MLOps Architecture
+* Deployment & Infrastructure Architecture
+
+---
+
+## 1. High-Level System Architecture
+
+### Client Layer
+
+* Web App (React / Next.js)
+* Tablet / Touch UI
+* Dictation Interface (Real-time audio streaming)
+
+**Users:** Radiologists, Sonographers, Admins
+
+### Gateway & Access Layer
+
+* API Gateway (NGINX / Kong)
+* Authentication (OAuth2 / OpenID, JWT, MFA)
+
+### Core Microservices
+
+* Patient Management Service
+* Study / Exam Service
+* Report Management Service
+* Template & Structured Reporting Service
+* Speech-to-Text Service (Whisper / Google Medical STT)
+* Medical NLP Normalization Service
+* AI Ultrasound Analysis Service
+
+### Data & Streaming
+
+* PostgreSQL (structured clinical data)
+* Object Storage (S3/MinIO – DICOM, Audio, PDFs)
+* Kafka (events: STT, reports, AI inference)
+* OpenSearch (search & indexing)
+
+### Observability
+
+* Prometheus (metrics)
+* Grafana (dashboards)
+* Centralized Logging (ELK / Loki)
+
+---
+
+## 2. Component-Level Architecture
+
+### Speech-to-Text Pipeline
+
+1. Audio captured from client
+2. Streamed via WebSocket
+3. STT Engine transcribes audio
+4. Medical NLP corrects terminology
+5. Events emitted to Kafka
+
+### Report Generation
+
+* Structured templates (JSON-based)
+* Rule engine for formatting
+* PDF & structured output
+
+### AI Image Analysis
+
+* DICOM ingestion
+* Pre-processing pipeline
+* AI inference (CNN/Transformer)
+* Findings & confidence scoring
+
+---
+
+## 3. Security Architecture
+
+### Identity & Access
+
+* OAuth2 / OpenID Connect
+* RBAC (Doctor, Admin, Auditor)
+
+### Data Protection
+
+* TLS everywhere
+* Encryption at rest (AES-256)
+* Key Management (KMS / Vault)
+
+### Compliance
+
+* HIPAA / GDPR ready
+* Immutable audit logs
+* Data residency support
+
+---
+
+## 4. AI & MLOps Architecture
+
+### Model Lifecycle
+
+* Data ingestion
+* Feature engineering
+* Model training & fine-tuning
+* Versioning (MLflow)
+
+### Deployment
+
+* Containerized models
+* Kubernetes inference services
+
+### Monitoring
+
+* Accuracy drift detection
+* Latency & error metrics
+
+### Retraining
+
+* Triggered by drift or schedule
+
+---
+
+## 5. Deployment & Infrastructure Architecture
+
+### Platform
+
+* Kubernetes (EKS / GKE / AKS)
+* Namespaces per environment
+
+### CI/CD
+
+* GitHub Actions
+* Helm charts
+* Canary / Blue-Green deployment
+
+### Environments
+
+* Development
+* Staging
+* Production
+
+---
+
+## 6. End-to-End Flow
+
+Doctor Dictates → STT → NLP → Report Service → AI Validation → Review → Final Report
+
+---
+
+## 7. Architectural Principles
+
+* Microservice-first
+* Event-driven
+* AI-native
+* Secure by design
+* Scalable & fault-tolerant
+
+---
+
+**This architecture is designed for enterprise clinical environments and scalable hospital deployments.**
+                                                                                                                         |
 
 ```
 
