@@ -274,3 +274,124 @@ Acceptance Criteria:
 - Architecture documented
 - Runbooks created
 - Reviewed by DevOps & AI teams","documentation,ai,task,priority-high",Mehr-Noor
+
+Title,Body,Labels,Assignee
+"9.1 Production Incident Response Process","Description:
+Define incident response process for production issues.
+
+Acceptance Criteria:
+- Incident severity levels defined
+- Response timelines documented
+- On-call rotation assigned","devops,support,task,priority-critical",Mehr-Noor
+
+"9.2 On-Call Monitoring Setup","Description:
+Setup on-call alerts for critical system components.
+
+Acceptance Criteria:
+- Alerts routed to on-call engineer
+- Escalation rules configured
+- Test alert verified","devops,monitoring,task,priority-critical",Mehr-Noor
+
+"9.3 SLA Definition & Documentation","Description:
+Define SLAs for uptime, response time, and support.
+
+Acceptance Criteria:
+- SLA metrics documented
+- Approved by stakeholders
+- Shared with users","support,documentation,task,priority-high",Mehr-Noor
+
+"9.4 Bug Triage Workflow","Description:
+Establish bug triage and prioritization workflow.
+
+Acceptance Criteria:
+- Bug severity levels defined
+- Workflow documented
+- Ownership assigned","support,process,task,priority-high",Mehr-Noor
+
+"9.5 Hotfix Deployment Procedure","Description:
+Define and test hotfix deployment process.
+
+Acceptance Criteria:
+- Hotfix can be deployed independently
+- Rollback tested
+- No data loss","devops,release,task,priority-critical",Mehr-Noor
+
+"9.6 Database Maintenance & Optimization","Description:
+Perform routine database maintenance and optimization.
+
+Acceptance Criteria:
+- Indexes optimized
+- Slow queries reduced
+- Maintenance logs stored","backend,database,task,priority-high",Mehr-Noor
+
+"9.7 Backup Restore Drills","Description:
+Periodically test backup restoration procedures.
+
+Acceptance Criteria:
+- Restore tested successfully
+- RTO/RPO met
+- Results documented","devops,backup,task,priority-critical",Mehr-Noor
+
+"9.8 Dependency & Security Updates","Description:
+Update system dependencies and apply security patches.
+
+Acceptance Criteria:
+- Dependencies updated safely
+- Vulnerabilities resolved
+- No regression detected","security,maintenance,task,priority-high",Mehr-Noor
+
+"9.9 Performance Load Testing","Description:
+Conduct periodic load and stress testing.
+
+Acceptance Criteria:
+- Performance benchmarks met
+- Bottlenecks identified
+- Report generated","qa,performance,task,priority-high",Mehr-Noor
+
+"9.10 Cost Monitoring & Optimization","Description:
+Monitor and optimize infrastructure and cloud costs.
+
+Acceptance Criteria:
+- Cost dashboards available
+- Unused resources identified
+- Monthly report created","devops,finops,task,priority-medium",Mehr-Noor
+
+"9.11 User Feedback Collection","Description:
+Collect feedback from clinicians and users.
+
+Acceptance Criteria:
+- Feedback channels active
+- Responses logged
+- Action items created","product,support,task,priority-medium",Mehr-Noor
+
+"9.12 Continuous Improvement Backlog","Description:
+Maintain backlog for continuous improvements.
+
+Acceptance Criteria:
+- Backlog prioritized
+- Items reviewed regularly
+- Improvements tracked","product,process,task,priority-medium",Mehr-Noor
+
+"9.13 Documentation Updates","Description:
+Keep technical and user documentation up to date.
+
+Acceptance Criteria:
+- Docs reviewed quarterly
+- Changes reflected accurately
+- Version history maintained","documentation,maintenance,task,priority-high",Mehr-Noor
+
+"9.14 Decommissioning & Cleanup Procedures","Description:
+Define procedures for decommissioning unused services.
+
+Acceptance Criteria:
+- Cleanup checklist created
+- No orphan resources
+- Costs reduced","devops,maintenance,task,priority-medium",Mehr-Noor
+
+"9.15 Annual System Review & Audit","Description:
+Perform annual system, security, and compliance review.
+
+Acceptance Criteria:
+- Audit completed
+- Findings addressed
+- Report approved","compliance,security,task,priority-critical",Mehr-Noor
