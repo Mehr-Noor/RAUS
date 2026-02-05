@@ -1,0 +1,32 @@
+Title,Body,Labels,Assignee
+1.1 Requirement Gathering & Interviews,"Description:
+Conduct interviews with radiologists and sonographers to gather functional requirements.
+
+Acceptance Criteria:
+- 10+ user interviews conducted
+- Documented feature list in PRD
+- Initial MVP defined","research,task,priority-critical",Mehr-Noor
+1.2 PRD Drafting,"Description:
+Compile requirements into a Product Requirement Document.
+
+Acceptance Criteria:
+- PRD includes features, users, constraints, scope
+- Reviewed by stakeholders","documentation,task,priority-high",Mehr-Noor
+2.1 Wireframe Design,"Description:
+Design wireframes for desktop and mobile UI.
+
+Acceptance Criteria:
+- Wireframes approved
+- Interactive prototype ready","design,task,priority-high",Mehr-Noor
+3.1 Kubernetes Cluster Setup,"Description:
+Provision a Kubernetes cluster.
+
+Acceptance Criteria:
+- kubectl access works
+- Nodes healthy","devops,task,priority-critical",Mehr-Noor
+4.1 Patient Management Microservice,"Description:
+Develop backend CRUD service.
+
+Acceptance Criteria:
+- CRUD endpoints work
+- Tests pass","backend,task,priority-critical",Mehr-Noor
