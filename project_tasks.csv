@@ -1,5 +1,5 @@
 Title,Body,Labels,Assignee
-"DEVOPS-1 Provision Kubernetes Cluster","Description:
+"1.1 Kubernetes Cluster Setup","Description:
 Provision a managed Kubernetes cluster (EKS/GKE or local kind).
 
 Acceptance Criteria:
@@ -7,7 +7,7 @@ Acceptance Criteria:
 - Nodes are Ready
 - Cluster documented","devops,epic-devops,task,priority-critical",Mehr-Noor
 
-"DEVOPS-2 Setup CI/CD with GitHub Actions","Description:
+"1.2 Setup CI/CD with GitHub Actions","Description:
 Create a CI/CD pipeline to build, test, and deploy services to Kubernetes.
 
 Acceptance Criteria:
@@ -15,7 +15,7 @@ Acceptance Criteria:
 - Docker images are built
 - Deployment succeeds","devops,epic-devops,task,priority-critical",Mehr-Noor
 
-"BACKEND-1 Kafka Cluster Setup","Description:
+"2.1 Kafka Cluster Setup","Description:
 Deploy Kafka for real-time data streaming.
 
 Acceptance Criteria:
@@ -23,7 +23,7 @@ Acceptance Criteria:
 - Topics created
 - Test producer/consumer works","backend,epic-backend,task,priority-critical",Mehr-Noor
 
-"BACKEND-2 Python Kafka Consumer Service","Description:
+"2.2 Python Kafka Consumer Service","Description:
 Build a Python microservice that consumes Kafka data and validates records.
 
 Acceptance Criteria:
@@ -31,7 +31,7 @@ Acceptance Criteria:
 - Invalid records flagged
 - Logs written","backend,epic-backend,task",Mehr-Noor
 
-"BACKEND-3 Feature Engineering Pipeline","Description:
+"2.3 Feature Engineering Pipeline","Description:
 Create data processing pipeline for feature extraction and transformation.
 
 Acceptance Criteria:
