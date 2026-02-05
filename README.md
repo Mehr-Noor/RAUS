@@ -167,6 +167,10 @@ This document provides the **full architectural view** of the RAUS system, inclu
 * Deployment & Infrastructure Architecture
 
 ---
+**This architecture is designed for enterprise clinical environments and scalable hospital deployments.**
+                                                                                                                         |
+
+```
 
 ## 1. High-Level System Architecture
 
@@ -316,10 +320,6 @@ Doctor Dictates → STT → NLP → Report Service → AI Validation → Review 
 
 ---
 
-**This architecture is designed for enterprise clinical environments and scalable hospital deployments.**
-                                                                                                                         |
-
-```
 
 ---
 
