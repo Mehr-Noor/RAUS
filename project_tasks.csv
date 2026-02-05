@@ -155,243 +155,138 @@ Acceptance Criteria:
 - Retraining pipeline operational
 - Metrics tracked in Grafana/Prometheus","ai,devops,priority-high",Mehr-Noor
 
-"8.4.1 Define AI Model KPIs","Description:
-Define performance KPIs for AI models (accuracy, precision, recall, latency, drift).
+"9.1 Production Deployment & Environment Setup","Description:
+Deploy all microservices, databases, and AI pipelines to the production environment. Section: Deployment & Maintenance; Phase: Post-release
 
 Acceptance Criteria:
-- KPI list documented
-- Thresholds defined for alerts
-- Approved by AI/clinical team","ai,mlops,task,priority-high",Mehr-Noor
+- Services running in production
+- Environment variables configured correctly
+- Deployment scripts tested","devops,backend,task,priority-critical",Mehr-Noor
 
-"8.4.2 Model Performance Logging","Description:
-Implement logging of AI model predictions and outcomes.
-
-Acceptance Criteria:
-- Predictions logged with timestamps
-- Logs stored securely
-- Data anonymized","ai,mlops,task,priority-high",Mehr-Noor
-
-"8.4.3 Data Drift Detection","Description:
-Detect data drift between training and production data.
+"9.2 Performance Optimization","Description:
+Optimize backend and AI services for latency, throughput, and resource usage. Section: Maintenance & Performance; Phase: Post-release
 
 Acceptance Criteria:
-- Drift metrics calculated
-- Alerts triggered on threshold breach
-- Results visible in dashboard","ai,mlops,task,priority-high",Mehr-Noor
+- Response time < 500ms for main endpoints
+- CPU/memory usage within thresholds
+- Load testing completed","backend,ai,task,priority-high",Mehr-Noor
 
-"8.4.4 Model Accuracy Monitoring Service","Description:
-Create microservice to monitor real-time model accuracy.
-
-Acceptance Criteria:
-- Service deployed on Kubernetes
-- Accuracy metrics updated continuously
-- Service health monitored","ai,backend,task,priority-high",Mehr-Noor
-
-"8.4.5 Prometheus Metrics Exporter for AI","Description:
-Expose AI metrics to Prometheus.
+"9.3 Post-release QA & Bug Fixes","Description:
+Perform QA testing on production system and fix post-release bugs. Section: Maintenance & QA; Phase: Post-release
 
 Acceptance Criteria:
-- Metrics endpoint available
-- Prometheus scrapes successfully
-- Metrics documented","ai,monitoring,task,priority-high",Mehr-Noor
+- Critical and high-priority bugs resolved
+- Regression testing passed
+- QA report approved","backend,frontend,task,priority-high",Mehr-Noor
 
-"8.4.6 Grafana AI Model Dashboard","Description:
-Build Grafana dashboard for AI model performance.
-
-Acceptance Criteria:
-- Dashboard shows accuracy, drift, latency
-- Accessible to authorized users
-- Auto-refresh enabled","ai,monitoring,task,priority-high",Mehr-Noor
-
-"8.4.7 Retraining Trigger Rules","Description:
-Define rules to trigger model retraining.
+"9.4 User Training & Documentation","Description:
+Prepare user manuals, release notes, and training sessions for clinical staff. Section: Documentation & Training; Phase: Post-release
 
 Acceptance Criteria:
-- Rules documented
-- Automatic trigger implemented
-- Manual override available","ai,mlops,task,priority-high",Mehr-Noor
+- User guides completed
+- Training sessions held with staff
+- Feedback incorporated into docs","documentation,frontend,task,priority-medium",Mehr-Noor
 
-"8.4.8 Dataset Versioning","Description:
-Implement dataset versioning for retraining.
-
-Acceptance Criteria:
-- Each dataset version tagged
-- Metadata stored
-- Rollback possible","ai,data,task,priority-high",Mehr-Noor
-
-"8.4.9 Automated Retraining Pipeline","Description:
-Create automated pipeline for model retraining.
+"9.5 Monitoring & Incident Response Setup","Description:
+Configure monitoring, alerting, and incident response procedures for production. Section: MLOps & DevOps; Phase: Post-release
 
 Acceptance Criteria:
-- Pipeline runs end-to-end
-- Training logs stored
-- Failures reported","ai,mlops,task,priority-critical",Mehr-Noor
+- Prometheus/Grafana dashboards configured
+- Alerts triggered correctly
+- Incident playbooks documented","devops,ai,task,priority-high",Mehr-Noor
 
-"8.4.10 Model Validation After Retraining","Description:
-Validate retrained models before deployment.
-
-Acceptance Criteria:
-- Validation tests pass
-- Metrics meet thresholds
-- Approval recorded","ai,mlops,task,priority-critical",Mehr-Noor
-
-"8.4.11 Model Registry Integration","Description:
-Store trained models in model registry.
+"10.1 Feature Enhancements","Description:
+Implement new features based on user feedback and roadmap. Section: Post-release Enhancements; Phase: Maintenance
 
 Acceptance Criteria:
-- Models versioned
-- Metadata attached
-- Accessible for deployment","ai,mlops,task,priority-high",Mehr-Noor
+- Features deployed successfully
+- Unit and integration tests passed
+- Feedback tracked and documented","backend,frontend,task,priority-high",Mehr-Noor
 
-"8.4.12 Canary Deployment for AI Models","Description:
-Deploy new AI models using canary strategy.
-
-Acceptance Criteria:
-- Partial traffic routed
-- Metrics compared old vs new
-- Rollback available","ai,devops,task,priority-high",Mehr-Noor
-
-"8.4.13 Automated Rollback Strategy","Description:
-Implement automatic rollback on performance degradation.
+"10.2 Bug Fixes & Patches","Description:
+Fix bugs reported by users after release. Section: Maintenance; Phase: Post-release
 
 Acceptance Criteria:
-- Rollback triggers tested
-- No downtime observed
-- Logs recorded","ai,devops,task,priority-critical",Mehr-Noor
+- Bugs resolved in staging and production
+- Regression tests completed
+- Users notified of fixes","backend,frontend,task,priority-high",Mehr-Noor
 
-"8.4.14 Security & Privacy Review for AI Data","Description:
-Review security and privacy of AI monitoring data.
-
-Acceptance Criteria:
-- PHI protected
-- Access controls verified
-- Compliance approved","ai,security,task,priority-critical",Mehr-Noor
-
-"8.4.15 Documentation for AI Monitoring & Retraining","Description:
-Document full AI monitoring and retraining lifecycle.
+"11.1 Security Audit & Updates","Description:
+Conduct security audit, apply patches, and update access controls. Section: Compliance & Security; Phase: Maintenance
 
 Acceptance Criteria:
-- Architecture documented
-- Runbooks created
-- Reviewed by DevOps & AI teams","documentation,ai,task,priority-high",Mehr-Noor
-
-Title,Body,Labels,Assignee
-"9.1 Production Incident Response Process","Description:
-Define incident response process for production issues.
-
-Acceptance Criteria:
-- Incident severity levels defined
-- Response timelines documented
-- On-call rotation assigned","devops,support,task,priority-critical",Mehr-Noor
-
-"9.2 On-Call Monitoring Setup","Description:
-Setup on-call alerts for critical system components.
-
-Acceptance Criteria:
-- Alerts routed to on-call engineer
-- Escalation rules configured
-- Test alert verified","devops,monitoring,task,priority-critical",Mehr-Noor
-
-"9.3 SLA Definition & Documentation","Description:
-Define SLAs for uptime, response time, and support.
-
-Acceptance Criteria:
-- SLA metrics documented
-- Approved by stakeholders
-- Shared with users","support,documentation,task,priority-high",Mehr-Noor
-
-"9.4 Bug Triage Workflow","Description:
-Establish bug triage and prioritization workflow.
-
-Acceptance Criteria:
-- Bug severity levels defined
-- Workflow documented
-- Ownership assigned","support,process,task,priority-high",Mehr-Noor
-
-"9.5 Hotfix Deployment Procedure","Description:
-Define and test hotfix deployment process.
-
-Acceptance Criteria:
-- Hotfix can be deployed independently
-- Rollback tested
-- No data loss","devops,release,task,priority-critical",Mehr-Noor
-
-"9.6 Database Maintenance & Optimization","Description:
-Perform routine database maintenance and optimization.
-
-Acceptance Criteria:
-- Indexes optimized
-- Slow queries reduced
-- Maintenance logs stored","backend,database,task,priority-high",Mehr-Noor
-
-"9.7 Backup Restore Drills","Description:
-Periodically test backup restoration procedures.
-
-Acceptance Criteria:
-- Restore tested successfully
-- RTO/RPO met
-- Results documented","devops,backup,task,priority-critical",Mehr-Noor
-
-"9.8 Dependency & Security Updates","Description:
-Update system dependencies and apply security patches.
-
-Acceptance Criteria:
-- Dependencies updated safely
 - Vulnerabilities resolved
-- No regression detected","security,maintenance,task,priority-high",Mehr-Noor
+- Penetration tests passed
+- Access permissions verified","security,backend,task,priority-critical",Mehr-Noor
 
-"9.9 Performance Load Testing","Description:
-Conduct periodic load and stress testing.
-
-Acceptance Criteria:
-- Performance benchmarks met
-- Bottlenecks identified
-- Report generated","qa,performance,task,priority-high",Mehr-Noor
-
-"9.10 Cost Monitoring & Optimization","Description:
-Monitor and optimize infrastructure and cloud costs.
+"11.2 Backup & Disaster Recovery","Description:
+Verify backup procedures and disaster recovery plans. Section: DevOps & Compliance; Phase: Maintenance
 
 Acceptance Criteria:
-- Cost dashboards available
-- Unused resources identified
-- Monthly report created","devops,finops,task,priority-medium",Mehr-Noor
+- Backups completed and verified
+- Recovery drills successful
+- Documentation updated","devops,task,priority-critical",Mehr-Noor
 
-"9.11 User Feedback Collection","Description:
-Collect feedback from clinicians and users.
-
-Acceptance Criteria:
-- Feedback channels active
-- Responses logged
-- Action items created","product,support,task,priority-medium",Mehr-Noor
-
-"9.12 Continuous Improvement Backlog","Description:
-Maintain backlog for continuous improvements.
+"12.1 Analytics & Reporting Improvements","Description:
+Enhance reporting pipeline with analytics dashboards and additional metrics. Section: Advanced Features; Phase: Maintenance
 
 Acceptance Criteria:
-- Backlog prioritized
-- Items reviewed regularly
-- Improvements tracked","product,process,task,priority-medium",Mehr-Noor
+- Dashboards show updated metrics
+- Reports export correctly
+- System load within thresholds","backend,frontend,ai,task,priority-high",Mehr-Noor
 
-"9.13 Documentation Updates","Description:
-Keep technical and user documentation up to date.
-
-Acceptance Criteria:
-- Docs reviewed quarterly
-- Changes reflected accurately
-- Version history maintained","documentation,maintenance,task,priority-high",Mehr-Noor
-
-"9.14 Decommissioning & Cleanup Procedures","Description:
-Define procedures for decommissioning unused services.
+"12.2 AI Model Retraining","Description:
+Retrain AI models with new data collected from production usage. Section: AI/ML Maintenance; Phase: Post-release
 
 Acceptance Criteria:
-- Cleanup checklist created
-- No orphan resources
-- Costs reduced","devops,maintenance,task,priority-medium",Mehr-Noor
+- Model retraining completed without errors
+- Performance metrics meet thresholds
+- Models deployed to production","ai,ml,task,priority-high",Mehr-Noor
 
-"9.15 Annual System Review & Audit","Description:
-Perform annual system, security, and compliance review.
+"13.1 Feature Flag Implementation","Description:
+Implement feature flags for safe rollout of new functionality. Section: DevOps / Backend; Phase: Maintenance
 
 Acceptance Criteria:
-- Audit completed
-- Findings addressed
-- Report approved","compliance,security,task,priority-critical",Mehr-Noor
+- Feature flags controllable per environment
+- Rollback possible without downtime
+- Logging of flag usage implemented","backend,devops,task,priority-medium",Mehr-Noor
+
+"13.2 System Health Dashboard","Description:
+Create dashboard for overall system health monitoring. Section: DevOps & Monitoring; Phase: Maintenance
+
+Acceptance Criteria:
+- Key metrics visible
+- Alerts configured for critical thresholds
+- Dashboard accessible to ops team","devops,task,priority-high",Mehr-Noor
+
+"14.1 Multi-language Report Updates","Description:
+Expand multi-language support for additional languages. Section: Frontend / Advanced Features; Phase: Post-release
+
+Acceptance Criteria:
+- New languages selectable in UI
+- Reports export correctly in selected language
+- Localization verified by QA","frontend,task,priority-medium",Mehr-Noor
+
+"14.2 Accessibility Improvements","Description:
+Improve UI accessibility for clinical staff. Section: Frontend / Usability; Phase: Maintenance
+
+Acceptance Criteria:
+- Screen reader compatibility
+- High-contrast mode implemented
+- User testing feedback incorporated","frontend,task,priority-medium",Mehr-Noor
+
+"15.1 SLA & Metrics Reporting","Description:
+Implement Service Level Agreement tracking and reporting for enterprise clients. Section: DevOps & Compliance; Phase: Maintenance
+
+Acceptance Criteria:
+- SLA metrics collected automatically
+- Reports generated for stakeholders
+- Alerts on SLA breaches","devops,task,priority-high",Mehr-Noor
+
+"15.2 Continuous Improvement & Feedback Loop","Description:
+Collect feedback, review performance, and plan next improvements. Section: Product & Maintenance; Phase: Post-release
+
+Acceptance Criteria:
+- Feedback collected from users and stakeholders
+- Metrics analyzed for improvements
+- Next release plan drafted","product,task,priority-medium",Mehr-Noor
