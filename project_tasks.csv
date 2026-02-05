@@ -1,0 +1,32 @@
+Epic,Task,Description,Acceptance Criteria
+Infrastructure Setup & DevOps Pipeline,Provision Kubernetes Cluster,"Provision a managed Kubernetes cluster (AWS EKS, Google GKE, or local kind/minikube for development).","- Kubernetes cluster is accessible via kubectl.
+- Cluster nodes are healthy and ready.
+- Documentation of cluster setup is added to repo."
+Infrastructure Setup & DevOps Pipeline,Deploy Prometheus and Grafana,"Deploy Prometheus for metrics collection and Grafana for visualization of cluster health and microservices.","- Prometheus is deployed and can scrape metrics from internal endpoints.
+- Grafana is deployed, and a user can log in.
+- A basic Grafana dashboard is set up showing CPU/Memory usage."
+Infrastructure Setup & DevOps Pipeline,Set up CI/CD pipeline,"Create a GitHub Actions workflow to automatically test, build, and deploy microservices to the Kubernetes cluster.","- Workflow triggers on pull request or push to main branch.
+- Microservices are automatically built, tested, and deployed to a staging cluster.
+- Pipeline logs are available in GitHub Actions console."
+Data Streaming & Real-Time Services,Set up Kafka Cluster,"Deploy Kafka cluster to handle streaming of raw data from ultrasound devices.","- Kafka broker(s) are running and reachable.
+- Topics for raw data, validated data, and anomalies are created.
+- A test producer and consumer can send and read messages."
+Data Streaming & Real-Time Services,Build Python Microservice for Kafka Consumer & Validation,"Build a Python microservice that consumes raw data from Kafka, validates it, and flags invalid records.","- Microservice consumes messages from Kafka.
+- Validation rules are applied, and invalid records are logged.
+- Valid messages are forwarded or stored in PostgreSQL/MongoDB."
+Data Streaming & Real-Time Services,Implement Real-Time Data Producer Service,"Create a real-time service that streams clean data and produces each row as a Kafka message. Containerize with Docker and implement logging.","- Service is containerized and deployable to Kubernetes.
+- Each data row is sent as a Kafka message.
+- Logging shows successful production of messages and service status."
+Data Validation & Reconciliation,Flink Job for Validation & Reconciliation,"Create a Flink-based job to validate streaming data in real-time and reconcile it using model-based algorithms.","- Flink job consumes messages from Kafka.
+- Invalid or anomalous records are flagged or sent to MongoDB.
+- Reconciliation rules are applied to correct data inconsistencies."
+Feature Engineering & Model Training,Build Data Processing Pipeline,"Process clean data to apply feature selection, extraction, and transformation, creating a feature set ready for model training.","- Pipeline runs automatically on input data.
+- Feature set is stored and accessible for model training.
+- Logging shows pipeline progress and completed steps."
+Feature Engineering & Model Training,Fine-tune AI/ML Models,"Fine-tune AI/ML models using the prepared feature set for improved accuracy and clinical relevance.","- Model training completes without errors.
+- Performance metrics meet defined thresholds.
+- Fine-tuned model is stored and ready for deployment."
+Monitoring & Logging,Integrate Metrics with InfluxDB,"Integrate microservices and Flink jobs with InfluxDB for metrics collection.","- Metrics from each service are stored in InfluxDB.
+- Data points are updated in real-time."
+Monitoring & Logging,Create Grafana Dashboards,"Build Grafana dashboards to visualize cluster health, microservice status, and metrics from InfluxDB.","- Dashboards are accessible via Grafana web UI.
+- At least one dashboard visualizes CPU, memory, Kafka message rate, and Flink job status."

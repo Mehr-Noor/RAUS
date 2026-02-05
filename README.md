@@ -62,19 +62,47 @@ The system follows a layered, service-oriented architecture:
 ## 4.1 High-Level System Architecture
 
 ```
-[Client (Web)]
-      ↓
-[API Gateway]
-      ↓
-[ASR Service (Whisper)]
-      ↓
-[Medical NLP Engine]
-      ↓
-[Template & Optimization Engine]
-      ↓
-[Report Editor & Export]
-      ↓
-[Data Storage & Analytics]
+┌──────────────────────────┐
+│   Web / Desktop Client   │
+│  (Mic + Live Editor UI)  │
+└────────────┬─────────────┘
+             │ Audio Stream
+             ▼
+┌──────────────────────────┐
+│   ASR Service (Whisper)  │
+│  - VAD                   │
+│  - Medical Post-Process  │
+└────────────┬─────────────┘
+             │ Text
+             ▼
+┌──────────────────────────┐
+│ Medical NLP Engine       │
+│ - Organ Detection        │
+│ - Negation               │
+│ - Measurement Extract    │
+└────────────┬─────────────┘
+             │ Structured JSON
+             ▼
+┌──────────────────────────┐
+│ Report Generator         │
+│ - Ultrasound Templates   │
+│ - Impression Builder     │
+└────────────┬─────────────┘
+             │ Draft Report
+             ▼
+┌──────────────────────────┐
+│ Review & Correction UI   │
+│ - Confidence Highlight   │
+│ - Quick Fix              │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│ Export / Integration     │
+│ - PDF / DOCX             │
+│ - PACS / RIS (Later)     │
+└──────────────────────────┘
+
 ```
 
 ---

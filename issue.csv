@@ -1,0 +1,172 @@
+Title,Body,Labels,Milestone
+"[SPRINT-0][DEVOPS] Project & Environment Bootstrap","## Description
+Initialize the project repositories, development standards, and base environment.
+
+## Scope / Tasks
+- [ ] Initialize mono-repo or multi-repo structure
+- [ ] Define Git branching strategy
+- [ ] Enable branch protection rules
+- [ ] Define Docker base images
+- [ ] Create initial README
+
+## Acceptance Criteria
+- Repositories created
+- Branch protection enabled
+- Base Dockerfiles committed
+- README available
+
+## Dependencies
+- None","task,devops","Sprint 0"
+"[SPRINT-0][DEVOPS] Provision Dev Kubernetes Cluster","## Description
+Provision a local development Kubernetes cluster.
+
+## Scope / Tasks
+- [ ] Provision cluster (kind/minikube)
+- [ ] Configure kubectl access
+- [ ] Create namespaces (dev, ml, monitoring)
+- [ ] Install nginx ingress
+
+## Acceptance Criteria
+- Cluster accessible
+- Namespaces created
+- Ingress running
+
+## Dependencies
+- Docker installed","task,devops","Sprint 0"
+"[SPRINT-0][DEVOPS] CI/CD Pipeline Skeleton","## Description
+Create CI/CD skeleton using GitHub Actions.
+
+## Scope / Tasks
+- [ ] Create workflow
+- [ ] Add test stage
+- [ ] Add Docker build
+- [ ] Push image to registry
+
+## Acceptance Criteria
+- Pipeline triggers on main
+- Image builds and pushes
+
+## Dependencies
+- Repo structure ready","task,devops","Sprint 0"
+"[SPRINT-0][DEVOPS] GitOps Deployment Setup","## Description
+Set up GitOps deployment using ArgoCD or Flux.
+
+## Scope / Tasks
+- [ ] Deploy ArgoCD/Flux
+- [ ] Create GitOps repo
+- [ ] Add sample manifests
+- [ ] Sync app via GitOps
+
+## Acceptance Criteria
+- GitOps controller running
+- App deploys via Git
+
+## Dependencies
+- Kubernetes cluster","task,devops,gitops","Sprint 0"
+"[SPRINT-0][OBS] Observability & Test Baseline","## Description
+Establish observability and testing baseline.
+
+## Scope / Tasks
+- [ ] Deploy Prometheus
+- [ ] Deploy Grafana
+- [ ] Create dashboards
+- [ ] Define unit test framework
+
+## Acceptance Criteria
+- Grafana accessible
+- Metrics visible
+- CI test stage green
+
+## Dependencies
+- CI/CD available","task,observability,qa","Sprint 0"
+"[SPRINT-1][ARCH] Microservice Architecture Baseline","## Description
+Define microservice architecture and communication patterns.
+
+## Scope / Tasks
+- [ ] Define service boundaries
+- [ ] Define API contracts
+- [ ] Decide REST/Kafka usage
+
+## Acceptance Criteria
+- Architecture documented
+- API specs published
+
+## Dependencies
+- Platform foundation ready","task,architecture","Sprint 1"
+"[SPRINT-1][ASR] Whisper ASR Service Scaffold","## Description
+Create Whisper-based ASR FastAPI service scaffold.
+
+## Scope / Tasks
+- [ ] Create FastAPI service
+- [ ] Add /health endpoint
+- [ ] Add audio upload endpoint
+- [ ] Dockerize service
+
+## Acceptance Criteria
+- Service runs locally
+- Health endpoint OK
+- Image builds
+- Deployed to dev namespace
+
+## Dependencies
+- CI/CD
+- Kubernetes","task,asr,ml,backend","Sprint 1"
+"[SPRINT-1][MLOPS] MLflow Deployment & Registry","## Description
+Deploy MLflow and configure model lifecycle.
+
+## Scope / Tasks
+- [ ] Deploy MLflow
+- [ ] Configure artifact storage
+- [ ] Register sample model
+
+## Acceptance Criteria
+- MLflow UI accessible
+- Model versioned
+
+## Dependencies
+- Kubernetes cluster","task,mlops","Sprint 1"
+"[SPRINT-1][ML] Model Serving Base","## Description
+Build base inference service loading models from MLflow.
+
+## Scope / Tasks
+- [ ] Create FastAPI inference service
+- [ ] Load model on startup
+- [ ] Define request/response schema
+
+## Acceptance Criteria
+- Inference API deployed
+- Sample inference works
+- Latency <5s
+
+## Dependencies
+- MLflow deployed","task,ml,backend","Sprint 1"
+"[SPRINT-1][QA] ASR Integration & E2E Testing","## Description
+Integrate ASR with downstream services and test end-to-end flow.
+
+## Scope / Tasks
+- [ ] Integrate ASR → NLP (mock)
+- [ ] Enable CI unit tests
+- [ ] Validate GitOps deployment
+
+## Acceptance Criteria
+- E2E pipeline functional
+- CI passes with coverage
+
+## Dependencies
+- ASR deployed","task,qa","Sprint 1"
+"[SPRINT-1][PLATFORM] Hardening & Documentation","## Description
+Stabilize platform, improve logging, dashboards, and docs.
+
+## Scope / Tasks
+- [ ] Fix deployment issues
+- [ ] Improve logging
+- [ ] Improve dashboards
+- [ ] Documentation cleanup
+
+## Acceptance Criteria
+- Stable dev environment
+- Actionable logs & metrics
+- Onboarding docs ready
+
+## Dependencies
+- Core services deployed","task,platform","Sprint 1"
