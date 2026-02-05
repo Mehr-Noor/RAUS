@@ -169,19 +169,6 @@ This document provides the **full architectural view** of the RAUS system, inclu
 ---
 **This architecture is designed for enterprise clinical environments and scalable hospital deployments.**
                                                                                                                          |
-| Week   | Task Numbers                  | Task Type                     | Backend                                                                           | Frontend                                  | AI / ML                                                  | DevOps / Infra                                                     | Compliance / QA                                     |
-| ------ | ----------------------------- | ----------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------- |
-| 0–1    | 1.1, 1.2, 3.1, 3.2            | Research / Documentation / DevOps | Repo setup, APIs skeleton                                                         | UI skeleton                               | STT POC setup                                            | K8s + Helm setup, CI/CD skeleton                                   | Kickoff, SRS review                                 |
-| 2–3    | 2.1, 2.2, 4.1, 4.2            | Design / Backend / Frontend   | Patient Management CRUD, report APIs                                              | Upload audio & display text               | STT integration PoC                                      | CI/CD for microservices                                            | Internal workflow testing                           |
-| 4–5    | 4.3, 5.1, 5.2, 7.1, 7.2       | Backend / DevOps              | API enhancements                                                                  | UI improvements                           | STT tuning                                               | Monitoring: Prometheus & Grafana, logging; Event streaming (Kafka) | -                                                   |
-| 6–7    | 8.1, 8.2, 8.3                 | Backend / Frontend / AI       | Report generation microservice; Advanced reporting features                       | Structured reports, multi-language        | AI integration pipeline; Improve STT, medical dictionary | Alerts & dashboards                                                | -                                                   |
-| 8–9    | 8.4, 5.3, 6.1, 6.2             | AI / DevOps / Compliance      | Model monitoring & retraining; DICOM indexing, backup                             | Minor UI polish                           | AI model monitoring & retraining                         | Data backup & encryption                                           | HIPAA/GDPR compliance; Security audit               |
-| 10–11  | 9.1, 9.2, 9.3, 9.4, 9.5       | DevOps / Backend / QA         | Final bug fixes; Production deployment                                            | Final polish                              | Final AI pipeline integration                            | CI/CD final check; Backup & disaster recovery                      | QA testing; Compliance review                       |
-| 12     | 10.1, 10.2, 10.3, 10.4, 10.5  | Backend / Frontend / AI       | Performance optimization; Feature enhancements                                    | UI enhancements                           | STT accuracy improvements                                 | Production deployment; Monitoring enhancements                     | QA sign-off                                          |
-| 13     | 11.1, 11.2, 11.3, 11.4, 11.5  | Backend / Frontend / AI       | Integration with hospital systems                                                 | Multi-language expansion                   | AI model retraining                                      | SLA tracking                                                       | Post-release QA review                               |
-| 14     | 12.1, 12.2, 12.3, 12.4, 12.5  | Backend / Frontend / AI       | Feature enhancements; Bug fixes                                                   | UI polish                                  | AI model monitoring                                      | Production monitoring                                             | Compliance sign-off                                  |
-| 15     | 13.1, 13.2, 13.3, 13.4, 13.5  | Backend / Frontend / AI       | Integration improvements                                                          | UI/UX adjustments                          | ML model retraining                                      | Infrastructure tuning                                              | QA verification                                      |
-| 16     | 14.1, 14.2, 14.3, 14.4, 14.5, 15.1, 15.2 | Backend / Frontend / AI / DevOps / QA | Final optimization; Release prep                                                  | Final UI polish                             | Final AI/ML pipeline                                      | CI/CD final check; Monitoring enhancements                         | Final QA sign-off; Training & documentation        |
 
 ```
 
@@ -556,3 +543,140 @@ Store system metrics, model performance, and usage analytics.
 ## 12. Conclusion
 
 This SRS defines a robust, scalable, and commercially viable foundation for an Ultrasound Speech Recognition & Structured Reporting platform, enabling rapid MVP delivery and long-term expansion into enterprise radiology solutions.
+
+# 🩺 Ultrasound Dictation & Reporting Roadmap (Weeks 0–12)
+
+<details>
+<summary>Week 0–1: Kickoff & Environment Setup</summary>
+
+**🎯 Goals:** Align the team and prepare infrastructure for development
+
+**👥 Project Kickoff**
+- Introduce team members: **Backend**, **Frontend**, **AI/ML**, **DevOps**, **QA**
+- Review SRS and task list **(Tasks: 1.1, 1.2)**
+- Define MVP scope and success criteria **(Tasks: 1.1, 1.2)**
+
+**🛠 Setup Tools & Workflow**
+- GitHub repo structure: `/backend`, `/frontend`, `/infra`, `/ai` **(Tasks: 3.1, 3.2)**
+- Task management: GitHub Issues / Jira **(Tasks: 3.1, 3.2)**
+- Communication: Slack / Teams
+- CI/CD pipelines (initial skeleton) **(Tasks: 3.2)**
+
+**☁ DevOps / Infrastructure**
+- Provision Kubernetes cluster (EKS/GKE/local) **(Tasks: 3.1)**
+- Install Helm for deployments **(Tasks: 3.2)**
+- Configure basic CI/CD workflow **(Tasks: 3.2)**
+
+**💾 Data Environment**
+- Setup PostgreSQL & MongoDB test databases **(Tasks: 4.1, 4.2)**
+- Configure dev/test credentials **(Tasks: 4.1, 4.2)**
+
+</details>
+
+<details>
+<summary>Weeks 2–3: MVP Core Services & AI POC</summary>
+
+**🎯 Goals:** Deliver an initial working Proof-of-Concept (PoC)
+
+**🖥 Backend Microservices**
+- Patient Management Service (CRUD for patient records) **(Tasks: 4.1)**
+- Initial APIs for report storage and retrieval **(Tasks: 4.2)**
+
+**💻 Frontend**
+- Basic UI for dictation upload and report display **(Tasks: 4.2)**
+
+**🤖 AI Integration**
+- Setup Speech-to-Text (STT) Engine (Whisper/Google) **(Tasks: 4.2, 4.3)**
+- Pipeline: Audio → STT → JSON → UI display **(Tasks: 4.2, 4.3)**
+
+**⚡ Quick Wins**
+- Upload audio and generate text report **(Tasks: 4.2, 4.3)**
+- Test end-to-end workflow internally **(Tasks: 4.2, 4.3)**
+
+</details>
+
+<details>
+<summary>Weeks 4–5: CI/CD, DevOps & Monitoring</summary>
+
+**🎯 Goals:** Establish enterprise-grade infrastructure for reliability and scalability
+
+- Complete CI/CD pipelines for all microservices **(Tasks: 3.2, 5.1, 5.2)**
+- Add containerization & Helm deployment charts **(Tasks: 3.2, 5.1, 5.2)**
+- Setup monitoring:
+  - Prometheus metrics for services **(Tasks: 7.1)**
+  - Grafana dashboards for key KPIs **(Tasks: 7.1, 7.2)**
+  - Configure centralized logging and alerting **(Tasks: 7.2)**
+
+</details>
+
+<details>
+<summary>Weeks 6–7: Core MVP Enhancements</summary>
+
+**🎯 Goals:** Strengthen MVP features and add acceptance criteria coverage
+
+**🖥 Backend**
+- Integrate role-based access control **(Tasks: 4.3)**
+- Add report generation microservice **(Tasks: 4.3, 8.3)**
+
+**🤖 AI**
+- Improve STT accuracy and integrate medical terminology dictionary **(Tasks: 8.4)**
+
+**💻 Frontend**
+- Display structured reports **(Tasks: 8.2, 8.3)**
+- Add multi-language support (English, Persian) **(Tasks: 8.2)**
+
+</details>
+
+<details>
+<summary>Weeks 8–9: Advanced Features & AI Readiness</summary>
+
+**🎯 Goals:** Prepare system for AI-driven enhancements
+
+**🤖 AI Model Monitoring**
+- Deploy model monitoring & retraining pipeline **(Tasks: 8.4, 10.1, 10.2)**
+- Metrics tracked in Grafana/Prometheus **(Tasks: 8.4, 10.1, 10.2)**
+
+**🖥 Advanced Reporting**
+- Templates for automatic report formatting **(Tasks: 8.3, 10.3)**
+- Export to PDF/structured formats **(Tasks: 8.3, 10.3)**
+- Integrate AI pipeline with backend microservices **(Tasks: 8.1, 8.3, 10.4, 10.5)**
+
+</details>
+
+<details>
+<summary>Weeks 10–11: Data Management & Compliance</summary>
+
+**🎯 Goals:** Ensure data integrity, security, and regulatory compliance
+
+- Setup DICOM storage & indexing in AWS S3 **(Tasks: 5.1)**
+- Configure Kafka event streaming for real-time patient data **(Tasks: 5.2)**
+- Implement backup, encryption, and restore strategies **(Tasks: 5.3, 11.1, 11.2)**
+- Conduct HIPAA/GDPR compliance audit and documentation **(Tasks: 6.1, 6.2, 11.3)**
+
+</details>
+
+<details>
+<summary>Week 12: QA, Testing & Release Prep</summary>
+
+**🎯 Goals:** Prepare system for release
+
+- Perform penetration testing and security audit **(Tasks: 6.2, 12.1, 12.2)**
+- End-to-end integration testing **(Tasks: 12.3, 12.4)**
+- Fine-tune dashboards and alerting **(Tasks: 7.1, 7.2, 12.5)**
+- Document deployment, runbooks, and SOPs **(Tasks: 13.1–13.5, 14.1–14.5)**
+- Prepare initial release version (MVP) **(Tasks: 15.1, 15.2)**
+
+</details>
+| Week   | Task Numbers                                                                                              | Task Type                                                                 | Backend                                                                           | Frontend                                  | AI / ML                                                  | DevOps / Infra                                                     | Compliance / QA                                     |
+| ------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------- |
+| 0–1    | [1.1](https://github.com/Mehr-Noor/RAUS/issues/1), [1.2](https://github.com/Mehr-Noor/RAUS/issues/2), [3.1](https://github.com/Mehr-Noor/RAUS/issues/3), [3.2](https://github.com/Mehr-Noor/RAUS/issues/4) | ![Research](https://img.shields.io/badge/Research-blue) ![Documentation](https://img.shields.io/badge/Documentation-green) ![DevOps](https://img.shields.io/badge/DevOps-orange) | Repo setup, APIs skeleton                                                         | UI skeleton                               | STT POC setup                                            | K8s + Helm setup, CI/CD skeleton                                   | Kickoff, SRS review                                 |
+| 2–3    | [2.1](https://github.com/Mehr-Noor/RAUS/issues/5), [2.2](https://github.com/Mehr-Noor/RAUS/issues/6), [4.1](https://github.com/Mehr-Noor/RAUS/issues/7), [4.2](https://github.com/Mehr-Noor/RAUS/issues/8) | ![Design](https://img.shields.io/badge/Design-purple) ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) | Patient Management CRUD, report APIs                                              | Upload audio & display text               | STT integration PoC                                      | CI/CD for microservices                                            | Internal workflow testing                           |
+| 4–5    | [4.3](https://github.com/Mehr-Noor/RAUS/issues/9), [5.1](https://github.com/Mehr-Noor/RAUS/issues/10), [5.2](https://github.com/Mehr-Noor/RAUS/issues/11), [7.1](https://github.com/Mehr-Noor/RAUS/issues/12), [7.2](https://github.com/Mehr-Noor/RAUS/issues/13) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![DevOps](https://img.shields.io/badge/DevOps-orange) | API enhancements                                                                  | UI improvements                           | STT tuning                                               | Monitoring: Prometheus & Grafana, logging; Event streaming (Kafka) | -                                                   |
+| 6–7    | [8.1](https://github.com/Mehr-Noor/RAUS/issues/14), [8.2](https://github.com/Mehr-Noor/RAUS/issues/15), [8.3](https://github.com/Mehr-Noor/RAUS/issues/16) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) ![AI](https://img.shields.io/badge/AI-pink) | Report generation microservice; Advanced reporting features                       | Structured reports, multi-language        | AI integration pipeline; Improve STT, medical dictionary | Alerts & dashboards                                                | -                                                   |
+| 8–9    | [8.4](https://github.com/Mehr-Noor/RAUS/issues/17), [5.3](https://github.com/Mehr-Noor/RAUS/issues/18), [6.1](https://github.com/Mehr-Noor/RAUS/issues/19), [6.2](https://github.com/Mehr-Noor/RAUS/issues/20) | ![AI](https://img.shields.io/badge/AI-pink) ![DevOps](https://img.shields.io/badge/DevOps-orange) ![Compliance](https://img.shields.io/badge/Compliance-red) | Model monitoring & retraining; DICOM indexing, backup                             | Minor UI polish                           | AI model monitoring & retraining                         | Data backup & encryption                                           | HIPAA/GDPR compliance; Security audit               |
+| 10–11  | [9.1](https://github.com/Mehr-Noor/RAUS/issues/21)-[9.5](https://github.com/Mehr-Noor/RAUS/issues/25)   | ![DevOps](https://img.shields.io/badge/DevOps-orange) ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![QA](https://img.shields.io/badge/QA-lightgrey) | Final bug fixes; Production deployment                                            | Final polish                              | Final AI pipeline integration                            | CI/CD final check; Backup & disaster recovery                      | QA testing; Compliance review                       |
+| 12     | [10.1](https://github.com/Mehr-Noor/RAUS/issues/26)-[10.5](https://github.com/Mehr-Noor/RAUS/issues/30) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) ![AI](https://img.shields.io/badge/AI-pink) | Performance optimization; Feature enhancements                                    | UI enhancements                           | STT accuracy improvements                                 | Production deployment; Monitoring enhancements                     | QA sign-off                                          |
+| 13     | [11.1](https://github.com/Mehr-Noor/RAUS/issues/31)-[11.5](https://github.com/Mehr-Noor/RAUS/issues/35) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) ![AI](https://img.shields.io/badge/AI-pink) | Integration with hospital systems                                                 | Multi-language expansion                   | AI model retraining                                      | SLA tracking                                                       | Post-release QA review                               |
+| 14     | [12.1](https://github.com/Mehr-Noor/RAUS/issues/36)-[12.5](https://github.com/Mehr-Noor/RAUS/issues/40) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) ![AI](https://img.shields.io/badge/AI-pink) | Feature enhancements; Bug fixes                                                   | UI polish                                  | AI model monitoring                                      | Production monitoring                                             | Compliance sign-off                                  |
+| 15     | [13.1](https://github.com/Mehr-Noor/RAUS/issues/41)-[13.5](https://github.com/Mehr-Noor/RAUS/issues/45) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) ![AI](https://img.shields.io/badge/AI-pink) | Integration improvements                                                          | UI/UX adjustments                          | ML model retraining                                      | Infrastructure tuning                                              | QA verification                                      |
+| 16     | [14.1](https://github.com/Mehr-Noor/RAUS/issues/46)-[15.2](https://github.com/Mehr-Noor/RAUS/issues/50) | ![Backend](https://img.shields.io/badge/Backend-blueviolet) ![Frontend](https://img.shields.io/badge/Frontend-lightblue) ![AI](https://img.shields.io/badge/AI-pink) ![DevOps](https://img.shields.io/badge/DevOps-orange) ![QA](https://img.shields.io/badge/QA-lightgrey) | Final optimization; Release prep                                                  | Final UI polish                             | Final AI/ML pipeline                                      | CI/CD final check; Monitoring enhancements                         | Final QA sign-off; Training & documentation        |
