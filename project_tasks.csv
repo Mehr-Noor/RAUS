@@ -1,40 +1,40 @@
 Title,Body,Labels,Assignee
-"[Epic: DevOps] Provision Kubernetes Cluster","Description:
+"DEVOPS-1 Provision Kubernetes Cluster","Description:
 Provision a managed Kubernetes cluster (EKS/GKE or local kind).
 
 Acceptance Criteria:
 - kubectl access works
 - Nodes are Ready
-- Cluster documented","devops,task,priority-critical",Mehr-Noor
+- Cluster documented","devops,epic-devops,task,priority-critical",Mehr-Noor
 
-"[Epic: DevOps] Setup CI/CD with GitHub Actions","Description:
+"DEVOPS-2 Setup CI/CD with GitHub Actions","Description:
 Create a CI/CD pipeline to build, test, and deploy services to Kubernetes.
 
 Acceptance Criteria:
 - Workflow triggers on PR/push
 - Docker images are built
-- Deployment succeeds","devops,task,priority-critical",Mehr-Noor
+- Deployment succeeds","devops,epic-devops,task,priority-critical",Mehr-Noor
 
-"[Epic: Backend] Kafka Cluster Setup","Description:
+"BACKEND-1 Kafka Cluster Setup","Description:
 Deploy Kafka for real-time data streaming.
 
 Acceptance Criteria:
 - Kafka broker running
 - Topics created
-- Test producer/consumer works","backend,task,priority-critical",Mehr-Noor
+- Test producer/consumer works","backend,epic-backend,task,priority-critical",Mehr-Noor
 
-"[Epic: Backend] Python Kafka Consumer Service","Description:
+"BACKEND-2 Python Kafka Consumer Service","Description:
 Build a Python microservice that consumes Kafka data and validates records.
 
 Acceptance Criteria:
 - Messages consumed
 - Invalid records flagged
-- Logs written","backend,task",Mehr-Noor
+- Logs written","backend,epic-backend,task",Mehr-Noor
 
-"[Epic: Backend] Feature Engineering Pipeline","Description:
+"BACKEND-3 Feature Engineering Pipeline","Description:
 Create data processing pipeline for feature extraction and transformation.
 
 Acceptance Criteria:
 - Clean data processed
 - Feature set generated
-- Ready for model training","backend,task",Mehr-Noor
+- Ready for model training","backend,epic-backend,task",Mehr-Noor
