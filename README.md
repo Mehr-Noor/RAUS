@@ -62,48 +62,6 @@ The system follows a layered, service-oriented architecture:
 ## 4.1 High-Level System Architecture
 
 ```
-┌──────────────────────────┐
-│   Web / Desktop Client   │
-│  (Mic + Live Editor UI)  │
-└────────────┬─────────────┘
-             │ Audio Stream
-             ▼
-┌──────────────────────────┐
-│   ASR Service (Whisper)  │
-│  - VAD                   │
-│  - Medical Post-Process  │
-└────────────┬─────────────┘
-             │ Text
-             ▼
-┌──────────────────────────┐
-│ Medical NLP Engine       │
-│ - Organ Detection        │
-│ - Negation               │
-│ - Measurement Extract    │
-└────────────┬─────────────┘
-             │ Structured JSON
-             ▼
-┌──────────────────────────┐
-│ Report Generator         │
-│ - Ultrasound Templates   │
-│ - Impression Builder     │
-└────────────┬─────────────┘
-             │ Draft Report
-             ▼
-┌──────────────────────────┐
-│ Review & Correction UI   │
-│ - Confidence Highlight   │
-│ - Quick Fix              │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│ Export / Integration     │
-│ - PDF / DOCX             │
-│ - PACS / RIS (Later)     │
-└──────────────────────────┘
-
-
         +--------------------+
         |     Frontend       |
         |  (Web & Mobile)    |
@@ -145,19 +103,8 @@ The system follows a layered, service-oriented architecture:
 | Security & Compliance |
 | Encryption / Audit  |
 +--------------------+
-                                                    # RAUS – Complete System Architecture (Ultrasound Dictation Platform)
-
-This document provides the **full architectural view** of the RAUS system, including:
-
-* High-Level Architecture
-* Component-Level Architecture
-* Security Architecture
-* AI & MLOps Architecture
-* Deployment & Infrastructure Architecture
-
----
-**This architecture is designed for enterprise clinical environments and scalable hospital deployments.**
-                                                                                                                         |
+                                                   
+         |
 
 ```
 
@@ -309,10 +256,7 @@ Doctor Dictates → STT → NLP → Report Service → AI Validation → Review 
 
 ---
 
-
----
-
-## 4.2 Technology Stack
+## 8. Technology Stack
 
 ### Frontend
 
@@ -349,7 +293,7 @@ Doctor Dictates → STT → NLP → Report Service → AI Validation → Review 
 
 ---
 
-## 5. Functional Requirements
+## 9. Functional Requirements
 
 ### FR-101: Multi-Source Data Integration
 
@@ -428,9 +372,9 @@ Transforms raw transcribed text into structured report components.
 
 ---
 
-## 6. Data Management Requirements
+## 10. Data Management Requirements
 
-### 6.1 Data Architecture
+###  Data Architecture
 
 * Structured data stored in PostgreSQL
 * Time-series metrics in TimescaleDB
@@ -438,9 +382,9 @@ Transforms raw transcribed text into structured report components.
 
 ---
 
-## 7. Non-Functional Requirements
+## 11. Non-Functional Requirements
 
-### 7.1 Performance Requirements
+###  Performance Requirements
 
 #### NFR-101: System Performance Matrix
 
@@ -460,9 +404,9 @@ Store system metrics, model performance, and usage analytics.
 
 ---
 
-## 8. MLOps & DevOps Requirements
+## 12. MLOps & DevOps Requirements
 
-### 8.1 CI/CD Pipeline
+### CI/CD Pipeline
 
 * Automated build and test
 * Container image scanning
@@ -489,9 +433,9 @@ Store system metrics, model performance, and usage analytics.
 
 ---
 
-## 9. Monitoring & Observability
+## 13. Monitoring & Observability
 
-### 9.1 Comprehensive Monitoring Stack
+### Comprehensive Monitoring Stack
 
 * Prometheus (Metrics)
 * Grafana (Dashboards)
@@ -509,25 +453,6 @@ Store system metrics, model performance, and usage analytics.
 * Alerting on SLA breaches
 
 ---
-
-## 10. Deployment & Infrastructure
-
-### 10.1 Kubernetes Deployment Architecture
-
-* Microservices deployed via Kubernetes
-* Horizontal Pod Autoscaling
-* Namespace isolation per environment
-
----
-
-## 11. Roadmap (Post-MVP)
-
-* Radiology reporting (CT/MRI/X-ray)
-* Impression recommendation engine
-* PACS/RIS native integration
-* Multi-language support
-
----
 ## 📘 Software Requirements & Architecture Overview
 
 | Section                                          | Details |
@@ -542,9 +467,7 @@ Store system metrics, model performance, and usage analytics.
 | **8. Deployment & Infrastructure**               | - AWS cloud<br>- Kubernetes cluster<br>- Helm releases<br>- Multi-zone setup |
 | **9. Compliance & Regulatory Requirements**      | - HIPAA & GDPR<br>- AES-256 & TLS encryption<br>- Audit logs<br>- Regulatory documentation |
 
-## 12. Conclusion
-
-This SRS defines a robust, scalable, and commercially viable foundation for an Ultrasound Speech Recognition & Structured Reporting platform, enabling rapid MVP delivery and long-term expansion into enterprise radiology solutions.
+---
 
 # 🩺 Ultrasound Dictation & Reporting Roadmap (Weeks 0–12)
 
