@@ -403,37 +403,7 @@ Transforms raw transcribed text into structured report components.
 Store system metrics, model performance, and usage analytics.
 
 ---
-
-## 12. MLOps & DevOps Requirements
-
-### CI/CD Pipeline
-
-* Automated build and test
-* Container image scanning
-* Environment-based deployment
-
----
-
-### MLOps-201: Model Lifecycle Management
-
-**Requirements:**
-
-* Versioned ASR/NLP models
-* Performance tracking
-* Rollback capability
-
----
-
-### MLOps-101: Automated Deployment Pipeline
-
-**Requirements:**
-
-* Canary deployments for models
-* Automated validation before promotion
-
----
-
-## 13. Monitoring & Observability
+## 12. Monitoring & Observability
 
 ### Comprehensive Monitoring Stack
 
