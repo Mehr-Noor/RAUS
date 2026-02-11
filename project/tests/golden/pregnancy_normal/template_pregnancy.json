@@ -1,0 +1,16 @@
+{
+  "id": "pregnancy_v1",
+  "type": "pregnancy",
+  "sections": [
+    {
+      "id": "general",
+      "report_text": [
+        "There is a gestational sac with a single fetal pole and proper position in endometrial cavity.",
+        "The age of pregnancy with measuring of CRL: {{crl}} mm is about {{ga_weeks}} W & {{ga_days}} D.",
+        "The yolk sac is seen. Decidual reaction is normal.",
+        "Placental is developing.",
+        "{{#if fhr_normal == true}}The FHR is regular.{{/if}}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "abdomen_v1",
+  "type": "abdomen",
+  "sections": [
+    {
+      "id": "liver",
+      "report_text": [
+        "{{#if fatty_liver != 'None'}}The liver has normal size and diffusely increased echo pattern in favor of fatty liver ({{fatty_liver}}).{{/if}}",
+        "{{#if fatty_liver == 'None'}}The liver has normal size and echogenicity.{{/if}}"
+      ]
+    },
+    {
+      "id": "spleen",
+      "report_text": [
+        "The spleen has normal size and echogenicity (spleen span: {{spleen_span}} mm).",
+        "{{#if spleen_span > 130}}Splenomegaly is noted.{{/if}}"
+      ]
+    },
+    {
+      "id": "kidneys",
+      "report_text": [
+        "{{#if hydronephrosis == false}}There is no evidence of hydronephrosis.{{/if}}",
+        "{{#if hydronephrosis == true}}Hydronephrosis is seen.{{/if}}"
+      ]
+    }
+  ]
+}
